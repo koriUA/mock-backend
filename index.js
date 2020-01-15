@@ -1,4 +1,5 @@
 const express = require('express');
+const dashboardsData = require('./dashboards-data');
 const app = express();
 const port = 3099;
 
@@ -47,6 +48,19 @@ app.get('/dashboards', (req, res, next) => {
     { id: 6, title: 'Session Analitics' }
   ]);
 });
+
+app.get('/dashboards/:id', (req, res, next) => {
+  res.send(dashboardsData.data[req.params.id] || dashboardsData.data[3]);
+});
+
+
+// After calling another ajax request:
+// GET https://rtm.coremetrics.com/rtm/ServData
+// metric=PageViewsPerSession
+// recordRate=12
+// recordCount=288
+// type=line
+// ts=1579095824087
 
 
 
