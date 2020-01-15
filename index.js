@@ -37,6 +37,18 @@ app.get('/fetch-report-details-by-id', (req, res, next) => {
   });
 });
 
+app.get('/dashboards', (req, res, next) => {
+  res.send([
+    { id: 1, title: 'Main Dashboard' },
+    { id: 2, title: 'Dashboard 001' },
+    { id: 3, title: 'My Dashboard' },
+    { id: 4, title: 'KPI Trends' },
+    { id: 5, title: 'Merchandise' },
+    { id: 6, title: 'Session Analitics' }
+  ]);
+});
+
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
