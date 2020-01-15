@@ -3,7 +3,7 @@ const dashboardsData = require('./dashboards-data');
 const app = express();
 const port = 3099;
 
-const MAX_DELAY = 5000;
+const MAX_DELAY = 0;
 const ERROR_POSIBILITY_PERCENT = 5;
 
 
@@ -52,16 +52,6 @@ app.get('/dashboards', (req, res, next) => {
 app.get('/dashboards/:id', (req, res, next) => {
   res.send(dashboardsData.data[req.params.id] || dashboardsData.data[3]);
 });
-
-
-// After calling another ajax request:
-// GET https://rtm.coremetrics.com/rtm/ServData
-// metric=PageViewsPerSession
-// recordRate=12
-// recordCount=288
-// type=line
-// ts=1579095824087
-
 
 
 
