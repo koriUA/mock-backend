@@ -4,7 +4,7 @@ const app = express();
 const port = 3099;
 
 const MAX_DELAY = 0;
-const ERROR_POSIBILITY_PERCENT = 5;
+const ERROR_POSIBILITY_PERCENT = 0;
 
 
 app.use((req, res, next) => {
@@ -52,6 +52,14 @@ app.get('/dashboards', (req, res, next) => {
 app.get('/dashboards/:id', (req, res, next) => {
   res.send(dashboardsData.data[req.params.id] || dashboardsData.data[3]);
 });
+
+app.get('/report-line/:id', (req, res, next) => {
+  res.send({
+    data: [1,32,4,5,76,777654,4,3,4,5,6,]
+  });
+});
+
+
 
 
 
