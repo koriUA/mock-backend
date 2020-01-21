@@ -43,10 +43,10 @@ module.exports = {
           "repType": "editableTableMedia",
           "repNameLabel": "Conversion Events"
         },
-        { id: 11, metrics: ["EDITABLE_BAR_MEDIA"], type: "barMedia" },
-        { id: 11, type: "conversion" },
-        { id: 11, metrics: [ "TOTAL_SESSIONS"], type: "topline" },
-        { id: 11, metrics: [ "TOTAL_SESSIONS"], type: "compaire" }
+        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: "barMedia" },
+        { id: 13, type: "conversion" },
+        { id: 14, metrics: [ "TOTAL_SESSIONS"], type: "topline" },
+        { id: 15, metrics: [ "TOTAL_SESSIONS"], type: "compaire" }
       ]
     },
     2: {

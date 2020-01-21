@@ -3,7 +3,7 @@ const dashboardsData = require("./dashboards-data");
 const app = express();
 const port = 3099;
 
-const MAX_DELAY = 3000;
+const MAX_DELAY = 1000;
 const ERROR_POSIBILITY_PERCENT = 0;
 
 app.use((req, res, next) => {
