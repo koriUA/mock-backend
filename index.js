@@ -52,10 +52,13 @@ app.get("/dashboards/:id", (req, res, next) => {
 app.get("/report-line/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
   res.send({
-    data: arr.map((_, index) => ({
-      xValue: `item-${index + 1}`,
-      yValue: Math.ceil(Math.random() * 100)
-    })),
+    data: {
+      cols: ["item", "value"],
+      values: arr.map((_, index) => [
+        `item-${index + 1}`,
+        Math.ceil(Math.random() * 100)
+      ])
+    },
     xAxisLabel: "Items",
     yAxisLabel: "Values"
   });
@@ -66,21 +69,14 @@ app.get("/bar-chart/:id", (req, res, next) => {
   res.send({
     xAxisLabel: "Items",
     yAxisLabel: "Values",
-    data: arr.map((_, index) => ({
-      color: getRandomColor(),
-      label: `item-${index + 1}`,
-      value: Math.ceil(Math.random() * 100)
-    }))
+    data: {
+      cols: ["item", "value"],
+      values: arr.map((_, index) => [
+        `item-${index + 1}`,
+        Math.ceil(Math.random() * 100)
+      ])
+    }
   });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 8) + 6];
-  }
-  return color;
-}
