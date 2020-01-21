@@ -52,30 +52,22 @@ app.get("/dashboards/:id", (req, res, next) => {
 app.get("/report-line/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
   res.send({
-    data: {
-      cols: ["item", "value"],
-      values: arr.map((_, index) => [
-        `item-${index + 1}`,
-        Math.ceil(Math.random() * 100)
-      ])
-    },
-    xAxisLabel: "Items",
-    yAxisLabel: "Values"
+    cols: ["item", "value"],
+    values: arr.map((_, index) => [
+      `item-${index + 1}`,
+      Math.ceil(Math.random() * 100)
+    ])
   });
 });
 
 app.get("/bar-chart/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
   res.send({
-    xAxisLabel: "Items",
-    yAxisLabel: "Values",
-    data: {
-      cols: ["item", "value"],
-      values: arr.map((_, index) => [
-        `item-${index + 1}`,
-        Math.ceil(Math.random() * 100)
-      ])
-    }
+    cols: ["item", "value"],
+    values: arr.map((_, index) => [
+      `item-${index + 1}`,
+      Math.ceil(Math.random() * 100)
+    ])
   });
 });
 
