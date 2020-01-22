@@ -111,6 +111,12 @@ app.get("/conversion-funnel/:id", (req, res, next) => {
   res.send(result);
 });
 
+app.get("/api/gauge/:id", (req, res, next) => {
+  return res.send({
+    value: Math.ceil(Math.random() * 100)
+  });
+});
+
 app.post("/dashboards/:id", (req, res, next) => {
   dashboardsData.data[req.params.id] = req.body;
   res.send(req.body);
