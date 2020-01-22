@@ -1,9 +1,9 @@
 const express = require("express");
 const dashboardsData = require("./dashboards-data");
 
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const app = express();
-app.use(bodyParser.json({limit: '10mb', extended: true}));
+app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
 const MAX_DELAY = 1000;
@@ -37,11 +37,11 @@ app.get("/fetch-report-details-by-id", (req, res, next) => {
 });
 
 app.get("/dashboards", (req, res, next) => {
-  const data = Object.keys(dashboardsData.data).map((key) => {
+  const data = Object.keys(dashboardsData.data).map(key => {
     return {
       id: dashboardsData.data[key].id,
-      title: dashboardsData.data[key].title,
-    }
+      title: dashboardsData.data[key].title
+    };
   });
   res.send(data);
 });
@@ -70,6 +70,45 @@ app.get("/bar-chart/:id", (req, res, next) => {
       Math.ceil(Math.random() * 100)
     ])
   });
+});
+
+function getPercents(a, b) {
+  return ((a / b) * 100).toFixed(2);
+}
+
+app.get("/conversion-funnel/:id", (req, res, next) => {
+  const arr = new Array(4).fill(1);
+  const initialMin = Math.ceil(Math.random() * 50) + 10;
+  const initialMax = Math.ceil(Math.random() * 100) + 200;
+  const result = {
+    cols: ["name", "label", "value"],
+    values: arr
+      .map((_, index, arr) => {
+        let val = 1;
+        switch (index) {
+          case 0:
+            val = initialMin;
+            break;
+          case arr.length - 1:
+            val = initialMax;
+            break;
+          case 1:
+            val = Math.ceil(Math.random() * 50) + 50;
+            break;
+          case 2:
+            val = Math.ceil(Math.random() * 100) + 100;
+            break;
+        }
+        return [
+          `Step-${arr.length - index}`,
+          `${val}k/${getPercents(val, initialMax)}%`,
+          val
+        ];
+      })
+      .reverse()
+  };
+
+  res.send(result);
 });
 
 app.post("/dashboards/:id", (req, res, next) => {
