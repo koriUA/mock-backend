@@ -1,6 +1,9 @@
 const express = require("express");
 const dashboardsData = require("./dashboards-data");
+
+const bodyParser = require("body-parser");
 const app = express();
+app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
 const MAX_DELAY = 1000;
@@ -8,9 +11,8 @@ const ERROR_POSIBILITY_PERCENT = 0;
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
   if (req.method === "OPTIONS") {
-    res.setHeader("Access-Control-Allow-Headers", "Authorisation");
-    res.setHeader("Access-Control-Request-Headers", "Authori  " + "sation");
     next();
     return;
   }
@@ -35,14 +37,13 @@ app.get("/fetch-report-details-by-id", (req, res, next) => {
 });
 
 app.get("/dashboards", (req, res, next) => {
-  res.send([
-    { id: 1, title: "Main Dashboard" },
-    { id: 2, title: "Dashboard 001" },
-    { id: 3, title: "My Dashboard" },
-    { id: 4, title: "KPI Trends" },
-    { id: 5, title: "Merchandise" },
-    { id: 6, title: "Session Analitics" }
-  ]);
+  const data = Object.keys(dashboardsData.data).map(key => {
+    return {
+      id: dashboardsData.data[key].id,
+      title: dashboardsData.data[key].title
+    };
+  });
+  res.send(data);
 });
 
 app.get("/dashboards/:id", (req, res, next) => {
@@ -64,7 +65,10 @@ app.get("/bar-chart/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
   res.send({
     cols: ["item", "value"],
-    values: arr.map((_, index) => [`item-${index + 1}`])
+    values: arr.map((_, index) => [
+      `item-${index + 1}`,
+      Math.ceil(Math.random() * 100)
+    ])
   });
 });
 
@@ -103,7 +107,13 @@ app.get("/conversion-funnel/:id", (req, res, next) => {
       })
       .reverse()
   };
+
   res.send(result);
+});
+
+app.post("/dashboards/:id", (req, res, next) => {
+  dashboardsData.data[req.params.id] = req.body;
+  res.send(req.body);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
