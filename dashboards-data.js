@@ -22,9 +22,6 @@ module.exports = {
           id: 1,
           metrics: ["TOTAL_ITEMS_ORDERED"],
           type: TREND,
-          scale: "100",
-          x: "130",
-          y: "29"
         },
         { id: 2, metrics: ["ITEMS_PER_ORDER"], type: TREND },
         { id: 3, metrics: ["TOTAL_ITEMS_ORDERED"], type: CUMULATIVE_TREND },
@@ -33,14 +30,11 @@ module.exports = {
         { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE },
         { id: 7, metrics: ["CURRENT_ACTIVE_SHOPING_CARTS"], type: GAUGE },
         { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND },
-        { id: 9, type: LABEL },
+        { id: 9, type: LABEL, title: "some label...." },
         { id: 10, type: CONVERSION_FUNNEL },
         {
           id: 11,
           metrics: ["EDITABLE_TABLE_MEDIA"],
-          scale: "100",
-          y: "371",
-          x: "845.45",
           andy: "isCool",
           metricsMedDown:
             "TotalConversionPoints_media,TotalConversionsInitiated_media,TotalConversionsCompleted_media,AverageEventPoints_media",
@@ -76,15 +70,13 @@ module.exports = {
     },
     2: {
       id: 2,
+      id: 2,
       title: "Dashboard 001",
       reports: [
         {
           id: 14,
           metrics: ["TOTAL_ITEMS_ORDERED"],
           type: TREND,
-          scale: "100",
-          x: "130",
-          y: "29"
         },
         { id: 31, metrics: ["ITEMS_PER_ORDER"], type: PROGRESS_BAR }
       ]
