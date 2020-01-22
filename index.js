@@ -1,6 +1,9 @@
 const express = require("express");
 const dashboardsData = require("./dashboards-data");
+
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.json({limit: '10mb', extended: true}));
 const port = 3099;
 
 const MAX_DELAY = 1000;
@@ -8,9 +11,8 @@ const ERROR_POSIBILITY_PERCENT = 0;
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
   if (req.method === "OPTIONS") {
-    res.setHeader("Access-Control-Allow-Headers", "Authorisation");
-    res.setHeader("Access-Control-Request-Headers", "Authori  " + "sation");
     next();
     return;
   }
@@ -69,6 +71,11 @@ app.get("/bar-chart/:id", (req, res, next) => {
       Math.ceil(Math.random() * 100)
     ])
   });
+});
+
+app.post("/dashboards/:id", (req, res, next) => {
+  dashboardsData.data[req.params.id] = req.body;
+  res.send(req.body);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
