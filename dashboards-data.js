@@ -16,7 +16,40 @@ module.exports = {
   data: {
     1: {
       id: 1,
-      title: "Main Dashboard",
+      title: "Demo Dashboard",
+      reports: [
+        {
+          id: 1,
+          metrics: ["TOTAL_ITEMS_ORDERED"],
+          type: TREND,
+        },
+        { id: 23, type: CONVERSION_FUNNEL },
+        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: HOURLY_BAR_CHART },
+        { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND },
+        { id: 10, type: CONVERSION_FUNNEL },
+        { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE },
+      ]
+    },
+    2: {
+      id: 2,
+      title: "Dashboard 001",
+      reports: [
+        {
+          id: 14,
+          metrics: ["TOTAL_ITEMS_ORDERED"],
+          type: TREND,
+        },
+        { id: 31, metrics: ["ITEMS_PER_ORDER"], type: PROGRESS_BAR }
+      ]
+    },
+    3: {
+      id: 3,
+      title: "My Dashboard",
+      reports: [{ id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND }]
+    },
+    4: {
+      id: 1,
+      title: "Dashboard with all report",
       reports: [
         {
           id: 1,
@@ -67,24 +100,6 @@ module.exports = {
         { id: 24, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND },
         { id: 25, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND }
       ]
-    },
-    2: {
-      id: 2,
-      id: 2,
-      title: "Dashboard 001",
-      reports: [
-        {
-          id: 14,
-          metrics: ["TOTAL_ITEMS_ORDERED"],
-          type: TREND,
-        },
-        { id: 31, metrics: ["ITEMS_PER_ORDER"], type: PROGRESS_BAR }
-      ]
-    },
-    3: {
-      id: 3,
-      title: "My Dashboard",
-      reports: [{ id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND }]
     }
   }
 };
