@@ -22,12 +22,13 @@ module.exports = {
           id: 1,
           metrics: ["TOTAL_ITEMS_ORDERED"],
           type: TREND,
+          title: 'Abandoned shopping carts'
         },
-        { id: 23, type: CONVERSION_FUNNEL },
-        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: HOURLY_BAR_CHART },
-        { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND },
-        { id: 10, type: CONVERSION_FUNNEL },
-        { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE },
+        { id: 23, type: CONVERSION_FUNNEL, title: 'Marketing programs' },
+        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: HOURLY_BAR_CHART, title: 'Some data 001' },
+        { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND, title: 'Some data 002' },
+        { id: 10, type: CONVERSION_FUNNEL, title: 'Some data 003' },
+        { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE, title: 'Some data 003' },
       ]
     },
     2: {
@@ -38,14 +39,15 @@ module.exports = {
           id: 14,
           metrics: ["TOTAL_ITEMS_ORDERED"],
           type: TREND,
+          title: 'Some data 001'
         },
-        { id: 31, metrics: ["ITEMS_PER_ORDER"], type: PROGRESS_BAR }
+        { id: 31, metrics: ["ITEMS_PER_ORDER"], type: PROGRESS_BAR, title: 'Some data 001' }
       ]
     },
     3: {
       id: 3,
       title: "My Dashboard",
-      reports: [{ id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND }]
+      reports: [{ id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' }]
     },
     4: {
       id: 1,
@@ -55,18 +57,20 @@ module.exports = {
           id: 1,
           metrics: ["TOTAL_ITEMS_ORDERED"],
           type: TREND,
+          title: 'Some data 001'
         },
-        { id: 2, metrics: ["ITEMS_PER_ORDER"], type: TREND },
-        { id: 3, metrics: ["TOTAL_ITEMS_ORDERED"], type: CUMULATIVE_TREND },
-        { id: 4, metrics: ["TOTAL_SALES"], type: PROGRESS_BAR },
-        { id: 5, metrics: ["TOP10_PRODUCTS_FOR_TODAY"], type: RECENT_ITEMS },
-        { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE },
-        { id: 7, metrics: ["CURRENT_ACTIVE_SHOPING_CARTS"], type: GAUGE },
-        { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND },
+        { id: 2, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' },
+        { id: 3, metrics: ["TOTAL_ITEMS_ORDERED"], type: CUMULATIVE_TREND, title: 'Some data 001' },
+        { id: 4, metrics: ["TOTAL_SALES"], type: PROGRESS_BAR, title: 'Some data 001' },
+        { id: 5, metrics: ["TOP10_PRODUCTS_FOR_TODAY"], type: RECENT_ITEMS, title: 'Some data 001' },
+        { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE, title: 'Some data 001' },
+        { id: 7, metrics: ["CURRENT_ACTIVE_SHOPING_CARTS"], type: GAUGE, title: 'Some data 001' },
+        { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND, title: 'Some data 001' },
         { id: 9, type: LABEL, title: "some label...." },
         { id: 10, type: CONVERSION_FUNNEL },
         {
           id: 11,
+          title: 'Some data 001',
           metrics: ["EDITABLE_TABLE_MEDIA"],
           andy: "isCool",
           metricsMedDown:
@@ -95,10 +99,10 @@ module.exports = {
           repType: REAL_TIME_MEDIA_REPORT,
           repNameLabel: "Conversion Events"
         },
-        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: HOURLY_BAR_CHART },
-        { id: 23, type: CONVERSION_FUNNEL },
-        { id: 24, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND },
-        { id: 25, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND }
+        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: HOURLY_BAR_CHART, title: 'Some data 001', },
+        { id: 23, type: CONVERSION_FUNNEL, title: 'Some data 001', },
+        { id: 24, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND, title: 'Some data 001', },
+        { id: 25, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND, title: 'Some data 001', }
       ]
     }
   }
