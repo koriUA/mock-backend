@@ -50,7 +50,7 @@ module.exports = {
       reports: [{ id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' }]
     },
     4: {
-      id: 1,
+      id: 5,
       title: "Dashboard with all report",
       reports: [
         {
