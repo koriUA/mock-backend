@@ -1,5 +1,6 @@
 const express = require("express");
 const dashboardsData = require("./dashboards-data");
+const metricsData = require("./metrics-data");
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -115,6 +116,10 @@ app.get("/api/gauge/:id", (req, res, next) => {
 app.post("/dashboards/:id", (req, res, next) => {
   dashboardsData.data[req.params.id] = req.body;
   res.send(req.body);
+});
+
+app.get('/report-details/:reportType', (req, res, next) => {
+  res.send(metricsData.data[req.params.reportType]);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

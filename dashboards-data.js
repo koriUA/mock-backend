@@ -49,7 +49,7 @@ module.exports = {
       title: "My Dashboard",
       reports: [{ id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' }]
     },
-    4: {
+    5: {
       id: 5,
       title: "Dashboard with all report",
       reports: [
