@@ -224,11 +224,14 @@ module.exports = {
     [HOURLY_BAR_CHART]: {
       metrics: [
         {
-          "id": "CUMULATIVE_SALES",
+          "id": "SOME_SALES",
         },
         {
-          "id": "CUMULATIVE_ORDERS",
+          "id": "SOME_ORDERS",
         },
+        {
+          "id": "EDITABLE_BAR_MEDIA"
+        }
       ],
     },
     [CONVERSION_FUNNEL]: {
