@@ -114,6 +114,13 @@ app.get("/api/gauge/:id", (req, res, next) => {
 });
 
 app.post("/dashboards/:id", (req, res, next) => {
+  const data = req.body;
+  data.reports = data.reports.map(el => {
+    if (!el.id) {
+      el.id = Math.floor(Math.random() * 10000000);
+    }
+    return el;
+  });
   dashboardsData.data[req.params.id] = req.body;
   res.send(req.body);
 });
