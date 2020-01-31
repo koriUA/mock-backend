@@ -13,6 +13,7 @@ const ERROR_POSIBILITY_PERCENT = 0;
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader("Access-Control-Allow-Methods", "*");
   if (req.method === "OPTIONS") {
     next();
     return;
@@ -122,6 +123,20 @@ app.post("/dashboards/:id", (req, res, next) => {
     return el;
   });
   dashboardsData.data[req.params.id] = req.body;
+  res.send(req.body);
+});
+
+app.put("/dashboards", (req, res, next) => {
+  const data = req.body;
+  data.reports = data.reports.map(el => {
+    if (!el.id) {
+      el.id = Math.floor(Math.random() * 10000000);
+    }
+    return el;
+  });
+  const randDashboardId = Math.floor(Math.random() * 10000000);
+  data.id = randDashboardId;
+  dashboardsData.data[randDashboardId] = data;
   res.send(req.body);
 });
 
