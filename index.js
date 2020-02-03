@@ -64,8 +64,6 @@ app.get("/report-line/:id", (req, res, next) => {
 });
 
 app.get("/api/kpi/:id", (req, res, next) => {
-  console.log("params: ", req.params);
-  console.log("query", req.query);
   let { cumulative } = req.params;
   if (!cumulative) cumulative = false;
   const arr = new Array(10).fill(1);

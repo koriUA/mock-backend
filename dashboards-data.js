@@ -51,6 +51,8 @@ module.exports = {
       reports: [
         { id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' },
         { id: 232, metrics: ["ITEMS_PER_ORDER"], type: KPI, visualization: 'BAR', cumulative: true, title: 'KPI test' },
+        { id: 233, metrics: ["ITEMS_PER_ORDER"], type: KPI, visualization: 'LINE', cumulative: true, title: 'KPI test' },
+        { id: 234, metrics: ["ITEMS_PER_ORDER"], type: KPI, visualization: 'PROGRESS', cumulative: true, title: 'KPI test' },
       ]
     },
     5: {
