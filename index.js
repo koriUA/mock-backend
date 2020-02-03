@@ -70,11 +70,10 @@ app.get("/api/kpi/:id", (req, res, next) => {
   if (!cumulative) cumulative = false;
   const arr = new Array(10).fill(1);
   res.send({
-    cols: ["item", "value"],
-    values: arr.map((_, index) => [
-      `item-${index + 1}`,
-      Math.ceil(Math.random() * 100)
-    ]),
+    values: arr.map((_, index) => ({
+      item: `item-${index + 1}`,
+      value: Math.ceil(Math.random() * 100)
+    })),
     cumulative
   });
 });
