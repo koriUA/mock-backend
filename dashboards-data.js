@@ -11,6 +11,7 @@ const REAL_TIME_MEDIA_REPORT = "REAL_TIME_MEDIA_REPORT";
 const RECENT_ITEMS = "RECENT_ITEMS";
 const RSS = "RSS";
 const TREND = "TREND";
+const KPI = "KPI";
 
 module.exports = {
   data: {
@@ -47,7 +48,10 @@ module.exports = {
     3: {
       id: 3,
       title: "My Dashboard",
-      reports: [{ id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' }]
+      reports: [
+        { id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' },
+        { id: 231, metrics: ["ITEMS_PER_ORDER"], type: KPI, visualization: 'BAR', cumulative: true, title: 'KPI test' },
+      ]
     },
     5: {
       id: 5,
