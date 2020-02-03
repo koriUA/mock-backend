@@ -64,8 +64,6 @@ app.get("/report-line/:id", (req, res, next) => {
 });
 
 app.get("/api/kpi/:id", (req, res, next) => {
-  console.log("params: ", req.params);
-  console.log("query", req.query);
   let { cumulative } = req.params;
   if (!cumulative) cumulative = false;
   const arr = new Array(10).fill(1);
@@ -78,7 +76,16 @@ app.get("/api/kpi/:id", (req, res, next) => {
   });
 });
 
-app.get("/bar-chart/:id");
+app.get("/bar-chart/:id", (req, res, next) => {
+  const arr = new Array(10).fill(1);
+  res.send({
+    cols: ["item", "value"],
+    values: arr.map((_, index) => [
+      `item-${index + 1}`,
+      Math.ceil(Math.random() * 100)
+    ])
+  });
+});
 
 function getPercents(a, b) {
   return ((a / b) * 100).toFixed(2);
