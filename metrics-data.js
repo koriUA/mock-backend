@@ -19,7 +19,17 @@ const KPI = "KPI";
 
 module.exports = {
   data: {
-    [TREND]: {
+    [CONVERSION_FUNNEL]: {
+      metrics: [
+        {
+          "id": "CUMULATIVE_SALES",
+        },
+        {
+          "id": "CUMULATIVE_ORDERS",
+        },
+      ],
+    },
+    [FILTERED_REPORTS]: {
       metrics: [
         {
           "id": "TOTAL_SALES",
@@ -113,161 +123,7 @@ module.exports = {
         }
       ],
     },
-    [CUMULATIVE_TREND]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-        {
-          "id": "CUMULATIVE_ITEMS_ORDERED",
-        },
-        {
-          "id": "CUMULATIVE_PAGE_VIEWS",
-        },
-        {
-          "id": "CUMULATIVE_PRODUCT_VIEWS",
-        },
-        {
-          "id": "CUMULATIVE_ONSITE_SEARCHES",
-        },
-        {
-          "id": "CUMULATIVE_SESSSIONS",
-        },
-        {
-          "id": "CUMULATIVE_BUYING_SESSIONS",
-        },
-        {
-          "id": "CUMULATIVE_NEW_SESSSIONS",
-        },
-        {
-          "id": "CUMULATIVE_REPEAT_SESSIONS",
-        },
-        {
-          "id": "CUMULATIVE_MMC_SESSIONS",
-        },
-        {
-          "id": "CUMULATIVE_DIRECT_LOAD_SESSIONS",
-        },
-        {
-          "id": "CUMULATIVE_NATURAL_SEARCH_SESSIONS",
-        },
-        {
-          "id": "CUMULATIVE_REFERRAL_SESSIONS",
-        },
-        {
-          "id": "CUMULATIVE_ELEMENT_VIEWS",
-        },
-        {
-          "id": "CUMULATIVE_ONE_PAGE_SESSIONS",
-        },
-        {
-          "id": "CUMULATIVE_EVENTS_INITIATED",
-        },
-        {
-          "id": "CUMULATIVE_EVENTS_COMPLETED",
-        },
-        {
-          "id": "CUMULATIVE_EVENT_POINTS",
-        }
-      ],
-    },
-    [CONVERSION_FUNNEL]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
-    [FILTERED_REPORTS]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
-    [CONVERSION_FUNNEL]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
-    [GAUGE]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
-    [CONVERSION_FUNNEL]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
-    [HOURLY_BAR_CHART]: {
-      metrics: [
-        {
-          "id": "SOME_SALES",
-        },
-        {
-          "id": "SOME_ORDERS",
-        },
-        {
-          "id": "EDITABLE_BAR_MEDIA"
-        }
-      ],
-    },
-    [CONVERSION_FUNNEL]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
-    [PROGRESS_BAR]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
     [REAL_TIME_MEDIA_CHART]: {
-      metrics: [
-        {
-          "id": "CUMULATIVE_SALES",
-        },
-        {
-          "id": "CUMULATIVE_ORDERS",
-        },
-      ],
-    },
-    [CONVERSION_FUNNEL]: {
       metrics: [
         {
           "id": "CUMULATIVE_SALES",
