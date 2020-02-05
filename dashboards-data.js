@@ -1,6 +1,5 @@
 const CONVERSION_FUNNEL = "CONVERSION_FUNNEL";
 const LABEL = "LABEL";
-const PROGRESS_BAR = "PROGRESS_BAR";
 const REAL_TIME_MEDIA_REPORT = "REAL_TIME_MEDIA_REPORT";
 const RECENT_ITEMS = "RECENT_ITEMS";
 const KPI = "KPI";
@@ -43,7 +42,6 @@ module.exports = {
       id: 5,
       title: "Dashboard with all report",
       reports: [
-        { id: 4, metrics: ["TOTAL_SALES"], type: PROGRESS_BAR, title: 'Some data 001' },
         { id: 5, metrics: ["TOP10_PRODUCTS_FOR_TODAY"], type: RECENT_ITEMS, title: 'Some data 001' },
         { id: 9, type: LABEL, title: "some label...." },
         { id: 10, type: CONVERSION_FUNNEL },
