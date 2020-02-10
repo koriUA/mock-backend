@@ -15,7 +15,7 @@ module.exports = {
           id: 2,
           metrics: ["TOTAL_ITEMS_ORDERED", "TOTAL_SALES", "TOTAL_SHIPPING"],
           type: FILTERED_REPORTS,
-          title: 'Abandoned shopping carts'
+          title: 'Abandoned shopping carts (filtered report)'
         },
         { id: 23, type: CONVERSION_FUNNEL, title: 'Marketing programs' },
         { id: 10, type: CONVERSION_FUNNEL, title: 'Some data 003' },
