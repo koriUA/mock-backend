@@ -1,13 +1,9 @@
 const CONVERSION_FUNNEL = "CONVERSION_FUNNEL";
-const CUMULATIVE_TREND = "CUMULATIVE_TREND";
-const GAUGE = "GAUGE";
-const HOURLY_BAR_CHART = "HOURLY_BAR_CHART";
 const LABEL = "LABEL";
-const PROGRESS_BAR = "PROGRESS_BAR";
 const REAL_TIME_MEDIA_REPORT = "REAL_TIME_MEDIA_REPORT";
 const RECENT_ITEMS = "RECENT_ITEMS";
-const TREND = "TREND";
 const KPI = "KPI";
+const FILTERED_REPORTS = "FILTERED_REPORTS";
 
 module.exports = {
   data: {
@@ -16,36 +12,27 @@ module.exports = {
       title: "Demo Dashboard",
       reports: [
         {
-          id: 1,
-          metrics: ["TOTAL_ITEMS_ORDERED"],
-          type: TREND,
-          title: 'Abandoned shopping carts'
+          id: 2,
+          metrics: ["TOTAL_ITEMS_ORDERED", "TOTAL_SALES", "TOTAL_SHIPPING"],
+          type: FILTERED_REPORTS,
+          title: 'Abandoned shopping carts (filtered report)'
         },
         { id: 23, type: CONVERSION_FUNNEL, title: 'Marketing programs' },
-        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: HOURLY_BAR_CHART, title: 'Some data 001' },
-        { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND, title: 'Some data 002' },
         { id: 10, type: CONVERSION_FUNNEL, title: 'Some data 003' },
-        { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE, title: 'Some data 003' },
       ]
     },
     2: {
       id: 2,
       title: "Dashboard 001",
       reports: [
-        {
-          id: 14,
-          metrics: ["TOTAL_ITEMS_ORDERED"],
-          type: TREND,
-          title: 'Some data 001'
-        },
-        { id: 31, metrics: ["ITEMS_PER_ORDER"], type: PROGRESS_BAR, title: 'Some data 001' }
+        { id: 4534, type: CONVERSION_FUNNEL, title: 'Some data 003' },
       ]
     },
     3: {
       id: 3,
       title: "My Dashboard",
       reports: [
-        { id: 231, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' },
+        { id: 231, metrics: ["ITEMS_PER_ORDER"], type: CONVERSION_FUNNEL, title: 'Some data 001' },
         { id: 232, metrics: ["ITEMS_PER_ORDER"], type: KPI, visualization: 'BAR', cumulative: true, title: 'KPI test' },
         { id: 233, metrics: ["ITEMS_PER_ORDER"], type: KPI, visualization: 'LINE', cumulative: true, title: 'KPI test' },
         { id: 234, metrics: ["ITEMS_PER_ORDER"], type: KPI, visualization: 'PROGRESS', cumulative: true, title: 'KPI test' },
@@ -55,19 +42,7 @@ module.exports = {
       id: 5,
       title: "Dashboard with all report",
       reports: [
-        {
-          id: 1,
-          metrics: ["TOTAL_ITEMS_ORDERED"],
-          type: TREND,
-          title: 'Some data 001'
-        },
-        { id: 2, metrics: ["ITEMS_PER_ORDER"], type: TREND, title: 'Some data 001' },
-        { id: 3, metrics: ["TOTAL_ITEMS_ORDERED"], type: CUMULATIVE_TREND, title: 'Some data 001' },
-        { id: 4, metrics: ["TOTAL_SALES"], type: PROGRESS_BAR, title: 'Some data 001' },
         { id: 5, metrics: ["TOP10_PRODUCTS_FOR_TODAY"], type: RECENT_ITEMS, title: 'Some data 001' },
-        { id: 6, metrics: ["CURRENT_SESSSIONS"], type: GAUGE, title: 'Some data 001' },
-        { id: 7, metrics: ["CURRENT_ACTIVE_SHOPING_CARTS"], type: GAUGE, title: 'Some data 001' },
-        { id: 8, metrics: ["ABANDONED_SHOPPING_CARTS"], type: TREND, title: 'Some data 001' },
         { id: 9, type: LABEL, title: "some label...." },
         { id: 10, type: CONVERSION_FUNNEL },
         {
@@ -101,10 +76,7 @@ module.exports = {
           repType: REAL_TIME_MEDIA_REPORT,
           repNameLabel: "Conversion Events"
         },
-        { id: 12, metrics: ["EDITABLE_BAR_MEDIA"], type: HOURLY_BAR_CHART, title: 'Some data 001', },
         { id: 23, type: CONVERSION_FUNNEL, title: 'Some data 001', },
-        { id: 24, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND, title: 'Some data 001', },
-        { id: 25, metrics: ["TOTAL_SESSIONS"], type: CUMULATIVE_TREND, title: 'Some data 001', }
       ]
     }
   }

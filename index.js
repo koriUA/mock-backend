@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
-const MAX_DELAY = 1000;
+const MAX_DELAY = 0;
 const ERROR_POSIBILITY_PERCENT = 0;
 
 app.use((req, res, next) => {
