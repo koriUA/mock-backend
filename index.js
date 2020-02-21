@@ -1,6 +1,7 @@
 const express = require("express");
 const dashboardsData = require("./dashboards-data");
 const metricsData = require("./metrics-data");
+const dateFns = require("date-fns");
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -63,17 +64,15 @@ app.get("/report-line/:id", (req, res, next) => {
   });
 });
 
-app.get("/api/kpi/:id", (req, res, next) => {
-  let { cumulative } = req.params;
-  if (!cumulative) cumulative = false;
-  const arr = new Array(10).fill(1);
-  res.send({
-    values: arr.map((_, index) => ({
-      item: `item-${index + 1}`,
-      value: Math.ceil(Math.random() * 100)
-    })),
-    cumulative
-  });
+app.post("/api/kpi", (req, res, next) => {
+  const { visualization, last24Hours, projected, metrics } = req.body;
+
+  const data = metrics.map(metric => ({
+    metricId: metric,
+    actualData: getActualDateArray(visualization),
+    projectedData: projected ? getProjectedDateArray(visualization) : null
+  }));
+  res.send({ data });
 });
 
 app.get("/bar-chart/:id", (req, res, next) => {
@@ -158,3 +157,57 @@ app.get("/report-details/:reportType", (req, res, next) => {
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+function getActualDateArray(visualization) {
+  switch (visualization) {
+    case "BAR": {
+      const arr = new Array(24).fill(1);
+      const yesterday = new Date(Date.now() - 3600 * 24);
+      return arr.map((_, index) => {
+        const updated = dateFns.addHours(yesterday, index);
+        return {
+          time: updated.valueOf(),
+          value: Math.ceil(Math.random() * 100)
+        };
+      });
+    }
+    case "LINE": {
+      const arr = new Array(24 * 12).fill(1);
+      const yesterday = new Date(Date.now() - 3600 * 24);
+      return arr.map((_, index) => {
+        const updated = dateFns.addMinutes(yesterday, index * 5);
+        return {
+          time: updated.valueOf(),
+          value: Math.ceil(Math.random() * 100)
+        };
+      });
+    }
+  }
+}
+
+function getProjectedDateArray(visualization) {
+  switch (visualization) {
+    case "BAR": {
+      const arr = new Array(24).fill(1);
+      const today = new Date(Date.now());
+      return arr.map((_, index) => {
+        const updated = dateFns.addHours(today, index);
+        return {
+          time: updated.valueOf(),
+          value: Math.ceil(Math.random() * 100)
+        };
+      });
+    }
+    case "LINE": {
+      const arr = new Array(24 * 12).fill(1);
+      const today = new Date(Date.now() - 3600 * 24);
+      return arr.map((_, index) => {
+        const updated = dateFns.addMinutes(today, index * 5);
+        return {
+          time: updated.valueOf(),
+          value: Math.ceil(Math.random() * 100)
+        };
+      });
+    }
+  }
+}
