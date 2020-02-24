@@ -66,10 +66,11 @@ app.get("/report-line/:id", (req, res, next) => {
 
 app.post("/api/kpi", (req, res, next) => {
   const { visualization, last24Hours, projected, metrics } = req.body;
+  // const visualization = "BAR";
 
   const data = metrics.map(metric => ({
     metricId: metric,
-    actualData: getActualDateArray(visualization),
+    actualData: getActualDateArray(visualization, last24Hours),
     projectedData: projected ? getProjectedDateArray(visualization) : null
   }));
   res.send({ data });
@@ -158,31 +159,49 @@ app.get("/report-details/:reportType", (req, res, next) => {
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-function getActualDateArray(visualization) {
+function getActualDateArray(visualization, last24Hours) {
   switch (visualization) {
     case "BAR": {
       const arr = new Array(24).fill(1);
-      const yesterday = new Date(Date.now() - 3600 * 24);
-      return arr.map((_, index) => {
+      const yesterday = new Date(Date.now() - 3600 * 24 * 1000);
+      const mapped = arr.map((_, index) => {
         const updated = dateFns.addHours(yesterday, index);
         return {
           time: updated.valueOf(),
           value: Math.ceil(Math.random() * 100)
         };
       });
+
+      return last24Hours
+        ? mapped
+        : mapped.filter(({ time }) => !isYesterday(time));
     }
     case "LINE": {
       const arr = new Array(24 * 12).fill(1);
-      const yesterday = new Date(Date.now() - 3600 * 24);
-      return arr.map((_, index) => {
+      const yesterday = new Date(Date.now() - 3600 * 24 * 1000);
+      const mapped = arr.map((_, index) => {
         const updated = dateFns.addMinutes(yesterday, index * 5);
         return {
           time: updated.valueOf(),
           value: Math.ceil(Math.random() * 100)
         };
       });
+
+      return last24Hours
+        ? mapped
+        : mapped.filter(({ time }) => !isYesterday(time));
     }
   }
+}
+
+function isYesterday(milliseconds) {
+  const now = new Date();
+  const beginOfTheDay = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+  return beginOfTheDay.valueOf() > milliseconds;
 }
 
 function getProjectedDateArray(visualization) {
@@ -200,7 +219,7 @@ function getProjectedDateArray(visualization) {
     }
     case "LINE": {
       const arr = new Array(24 * 12).fill(1);
-      const today = new Date(Date.now() - 3600 * 24);
+      const today = new Date(Date.now());
       return arr.map((_, index) => {
         const updated = dateFns.addMinutes(today, index * 5);
         return {
