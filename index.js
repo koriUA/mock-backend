@@ -165,7 +165,7 @@ function getActualDateArray(visualization, last24Hours) {
       const arr = new Array(24).fill(1);
       const yesterday = new Date(Date.now() - 3600 * 24 * 1000);
       const mapped = arr.map((_, index) => {
-        const updated = dateFns.addHours(yesterday, index);
+        const updated = dateFns.addHours(yesterday, index + 1);
         return {
           time: updated.valueOf(),
           value: Math.ceil(Math.random() * 100)
@@ -180,7 +180,7 @@ function getActualDateArray(visualization, last24Hours) {
       const arr = new Array(24 * 12).fill(1);
       const yesterday = new Date(Date.now() - 3600 * 24 * 1000);
       const mapped = arr.map((_, index) => {
-        const updated = dateFns.addMinutes(yesterday, index * 5);
+        const updated = dateFns.addMinutes(yesterday, index * 5 + 5);
         return {
           time: updated.valueOf(),
           value: Math.ceil(Math.random() * 100)
@@ -210,7 +210,7 @@ function getProjectedDateArray(visualization) {
       const arr = new Array(24).fill(1);
       const today = new Date(Date.now());
       return arr.map((_, index) => {
-        const updated = dateFns.addHours(today, index);
+        const updated = dateFns.addHours(today, index + 1);
         return {
           time: updated.valueOf(),
           value: Math.ceil(Math.random() * 100)
@@ -221,7 +221,7 @@ function getProjectedDateArray(visualization) {
       const arr = new Array(24 * 12).fill(1);
       const today = new Date(Date.now());
       return arr.map((_, index) => {
-        const updated = dateFns.addMinutes(today, index * 5);
+        const updated = dateFns.addMinutes(today, index * 5 + 5);
         return {
           time: updated.valueOf(),
           value: Math.ceil(Math.random() * 100)
