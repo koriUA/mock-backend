@@ -39,10 +39,11 @@ app.use((req, res, next) => {
   res.send(data);
 });*/
 
+/*
 app.get("/api/dashboards/:id", (req, res, next) => {
   console.log('GET /api/dashboard/:id');
   res.send(dashboardsData.data[1]);
-});
+});*/
 
 /*app.get("/report-line/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
@@ -114,7 +115,7 @@ app.get("/conversion-funnel/:id", (req, res, next) => {
 });
 */
 
-
+/*
 app.post("/dashboards/:id", (req, res, next) => {
   const data = req.body;
   data.reports = data.reports.map(el => {
@@ -140,7 +141,7 @@ app.put("/dashboards", (req, res, next) => {
   dashboardsData.data[randDashboardId] = data;
   res.send(req.body);
 });
-
+*/
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
 });*/
