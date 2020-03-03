@@ -39,11 +39,11 @@ app.use((req, res, next) => {
   res.send(data);
 });*/
 
-/*
+
 app.get("/api/dashboards/:id", (req, res, next) => {
   console.log('GET /api/dashboard/:id');
   res.send(dashboardsData.data[1]);
-});*/
+});
 
 /*app.get("/report-line/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
