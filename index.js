@@ -1,7 +1,8 @@
 const express = require("express");
 const dashboardsData = require("./dashboards-data");
 const metricsData = require("./metrics-data");
-const dateFns = require("date-fns");
+const UtilsService = require("./utils");
+const request = require("request");
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -27,19 +28,8 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
-app.get("/fetch-report-details-by-id", (req, res, next) => {
-  res.send({
-    data: {
-      availableMetrics: [
-        { id: 1, title: "Total Sales", type: "currency" },
-        { id: 2, title: "Order per session", type: "percent" },
-        { id: 3, title: "Average shipping", type: "currency" }
-      ]
-    }
-  });
-});
-
-app.get("/dashboards", (req, res, next) => {
+/*app.get("/api/dashboards", (req, res, next) => {
+  console.log('GET /api/dashboards');
   const data = Object.keys(dashboardsData.data).map(key => {
     return {
       id: dashboardsData.data[key].id,
@@ -47,13 +37,15 @@ app.get("/dashboards", (req, res, next) => {
     };
   });
   res.send(data);
-});
+});*/
 
-app.get("/dashboards/:id", (req, res, next) => {
-  res.send(dashboardsData.data[req.params.id] || dashboardsData.data[3]);
-});
+/*
+app.get("/api/dashboards/:id", (req, res, next) => {
+  console.log('GET /api/dashboard/:id');
+  res.send(dashboardsData.data[1]);
+});*/
 
-app.get("/report-line/:id", (req, res, next) => {
+/*app.get("/report-line/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
   res.send({
     cols: ["item", "value"],
@@ -62,20 +54,22 @@ app.get("/report-line/:id", (req, res, next) => {
       Math.ceil(Math.random() * 100)
     ])
   });
-});
+});*/
 
+/*
 app.post("/api/kpi", (req, res, next) => {
   const { visualization, last24Hours, projected, metrics } = req.body;
-  // const visualization = "BAR";
 
   const data = metrics.map(metric => ({
     metricId: metric,
-    actualData: getActualDateArray(visualization, last24Hours),
-    projectedData: projected ? getProjectedDateArray(visualization) : null
+    actualData: UtilsService.getActualDateArray(visualization, last24Hours),
+    projectedData: projected ? UtilsService.getProjectedDateArray(visualization) : null
   }));
   res.send({ data });
 });
+ */
 
+/*
 app.get("/bar-chart/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
   res.send({
@@ -86,11 +80,9 @@ app.get("/bar-chart/:id", (req, res, next) => {
     ])
   });
 });
+*/
 
-function getPercents(a, b) {
-  return ((a / b) * 100).toFixed(2);
-}
-
+/*
 app.get("/conversion-funnel/:id", (req, res, next) => {
   const arr = new Array(4).fill(1);
   const initialMin = Math.ceil(Math.random() * 50) + 10;
@@ -113,20 +105,16 @@ app.get("/conversion-funnel/:id", (req, res, next) => {
     }
     return {
       name: `Step-${arr.length - index}`,
-      label: `${val}k/${getPercents(val, initialMax)}%`,
+      label: `${val}k/${UtilsService.getPercents(val, initialMax)}%`,
       value: val
     };
   });
 
   res.send(data.reverse());
 });
+*/
 
-app.get("/api/gauge/:id", (req, res, next) => {
-  return res.send({
-    value: Math.ceil(Math.random() * 100)
-  });
-});
-
+/*
 app.post("/dashboards/:id", (req, res, next) => {
   const data = req.body;
   data.reports = data.reports.map(el => {
@@ -152,81 +140,19 @@ app.put("/dashboards", (req, res, next) => {
   dashboardsData.data[randDashboardId] = data;
   res.send(req.body);
 });
-
-app.get("/report-details/:reportType", (req, res, next) => {
+*/
+/*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
+});*/
+
+app.all("*", (req, res, next) => {
+  const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
+  console.log(`proxy to ${newUrl}${req.originalUrl}...`);
+  request({
+    method: req.method,
+    uri: `${newUrl}${req.originalUrl}`,
+    json: req.body
+  }).pipe(res);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-function getActualDateArray(visualization, last24Hours) {
-  switch (visualization) {
-    case "BAR": {
-      const arr = new Array(24).fill(1);
-      const yesterday = new Date(Date.now() - 3600 * 24 * 1000);
-      const mapped = arr.map((_, index) => {
-        const updated = dateFns.addHours(yesterday, index + 1);
-        return {
-          time: updated.valueOf(),
-          value: Math.ceil(Math.random() * 100)
-        };
-      });
-
-      return last24Hours
-        ? mapped
-        : mapped.filter(({ time }) => !isYesterday(time));
-    }
-    case "LINE": {
-      const arr = new Array(24 * 12).fill(1);
-      const yesterday = new Date(Date.now() - 3600 * 24 * 1000);
-      const mapped = arr.map((_, index) => {
-        const updated = dateFns.addMinutes(yesterday, index * 5 + 5);
-        return {
-          time: updated.valueOf(),
-          value: Math.ceil(Math.random() * 100)
-        };
-      });
-
-      return last24Hours
-        ? mapped
-        : mapped.filter(({ time }) => !isYesterday(time));
-    }
-  }
-}
-
-function isYesterday(milliseconds) {
-  const now = new Date();
-  const beginOfTheDay = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate()
-  );
-  return beginOfTheDay.valueOf() > milliseconds;
-}
-
-function getProjectedDateArray(visualization) {
-  switch (visualization) {
-    case "BAR": {
-      const arr = new Array(24).fill(1);
-      const today = new Date(Date.now());
-      return arr.map((_, index) => {
-        const updated = dateFns.addHours(today, index + 1);
-        return {
-          time: updated.valueOf(),
-          value: Math.ceil(Math.random() * 100)
-        };
-      });
-    }
-    case "LINE": {
-      const arr = new Array(24 * 12).fill(1);
-      const today = new Date(Date.now());
-      return arr.map((_, index) => {
-        const updated = dateFns.addMinutes(today, index * 5 + 5);
-        return {
-          time: updated.valueOf(),
-          value: Math.ceil(Math.random() * 100)
-        };
-      });
-    }
-  }
-}

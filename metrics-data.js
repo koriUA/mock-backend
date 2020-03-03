@@ -13,134 +13,134 @@ module.exports = {
     [CONVERSION_FUNNEL]: {
       metrics: [
         {
-          "id": "CUMULATIVE_SALES",
+          "metricId": "CUMULATIVE_SALES",
         },
         {
-          "id": "CUMULATIVE_ORDERS",
+          "metricId": "CUMULATIVE_ORDERS",
         },
       ],
     },
     [FILTERED_REPORTS]: {
       metrics: [
         {
-          "id": "TOTAL_SALES",
+          "metricId": "TOTAL_SALES",
         },
         {
-          "id": "TOTAL_ORDERS",
+          "metricId": "TOTAL_ORDERS",
         },
         {
-          "id": "TOTAL_ITEMS_ORDERED",
+          "metricId": "TOTAL_ITEMS_ORDERED",
         },
         {
-          "id": "TOTAL_SHIPPING",
+          "metricId": "TOTAL_SHIPPING",
         },
         {
-          "id": "TOTAL_PAGE_VIEWS",
+          "metricId": "TOTAL_PAGE_VIEWS",
         },
         {
-          "id": "TOTAL_PRODUCT_VIEWS",
+          "metricId": "TOTAL_PRODUCT_VIEWS",
         },
         {
-          "id": "TOTAL_ONSITE_SEARCH",
+          "metricId": "TOTAL_ONSITE_SEARCH",
         },
         {
-          "id": "TOTAL_SESSIONS",
+          "metricId": "TOTAL_SESSIONS",
         },
         {
-          "id": "BUYING_SESSIONS_COMPLETED",
+          "metricId": "BUYING_SESSIONS_COMPLETED",
         },
         {
-          "id": "TOTAL_NEW_SESSIONS",
+          "metricId": "TOTAL_NEW_SESSIONS",
         },
         {
-          "id": "TOTAL_REPEATED_SESSIONS",
+          "metricId": "TOTAL_REPEATED_SESSIONS",
         },
         {
-          "id": "TOTAL_MMC_SESSIONS",
+          "metricId": "TOTAL_MMC_SESSIONS",
         },
         {
-          "id": "TOTAL_DIRECT_LOAD_SESSIONS",
+          "metricId": "TOTAL_DIRECT_LOAD_SESSIONS",
         },
         {
-          "id": "TOTAL_NATURAL_SEARCH_SESSIONS",
+          "metricId": "TOTAL_NATURAL_SEARCH_SESSIONS",
         },
         {
-          "id": "TOTAL_REFERRAL_SESSIONS",
+          "metricId": "TOTAL_REFERRAL_SESSIONS",
         },
         {
-          "id": "AVERAGE_SESSION_LENGTH",
+          "metricId": "AVERAGE_SESSION_LENGTH",
         },
         {
-          "id": "AVERAGE_ORDER_VALUE",
+          "metricId": "AVERAGE_ORDER_VALUE",
         },
         {
-          "id": "ITEMS_PER_ORDER",
+          "metricId": "ITEMS_PER_ORDER",
         },
         {
-          "id": "SHIPPING_PER_ORDER",
+          "metricId": "SHIPPING_PER_ORDER",
         },
         {
-          "id": "AVERAGE_ITEMS_IN_SHOPPING_CART",
+          "metricId": "AVERAGE_ITEMS_IN_SHOPPING_CART",
         },
         {
-          "id": "ABANDONED_SHOPPING_CARTS",
+          "metricId": "ABANDONED_SHOPPING_CARTS",
         },
         {
-          "id": "BUYING_SESSIONS_PER_SESSION",
+          "metricId": "BUYING_SESSIONS_PER_SESSION",
         },
         {
-          "id": "PAGE_VIEWS_PER_SESSION",
+          "metricId": "PAGE_VIEWS_PER_SESSION",
         },
         {
-          "id": "PRODUCT_VIEWS_PER_SESSION",
+          "metricId": "PRODUCT_VIEWS_PER_SESSION",
         },
         {
-          "id": "ONSITE_SEARCHES_PER_SESSION",
+          "metricId": "ONSITE_SEARCHES_PER_SESSION",
         },
         {
-          "id": "ELEMENT_VIEWS",
+          "metricId": "ELEMENT_VIEWS",
         },
         {
-          "id": "ONE_PAGE_SESSIONS",
+          "metricId": "ONE_PAGE_SESSIONS",
         },
         {
-          "id": "EVENTS_INITIATED",
+          "metricId": "EVENTS_INITIATED",
         },
         {
-          "id": "EVENTS_COMPLETED",
+          "metricId": "EVENTS_COMPLETED",
         },
         {
-          "id": "EVENT_POINTS",
+          "metricId": "EVENT_POINTS",
         }
       ],
     },
     [REAL_TIME_MEDIA_CHART]: {
       metrics: [
         {
-          "id": "CUMULATIVE_SALES",
+          "metricId": "CUMULATIVE_SALES",
         },
         {
-          "id": "CUMULATIVE_ORDERS",
+          "metricId": "CUMULATIVE_ORDERS",
         },
       ],
     },
     [REAL_TIME_MEDIA_REPORT]: {
       metrics: [
         {
-          "id": "CUMULATIVE_SALES",
+          "metricId": "CUMULATIVE_SALES",
         },
         {
-          "id": "CUMULATIVE_ORDERS",
+          "metricId": "CUMULATIVE_ORDERS",
         },
       ],
     },
     [RECENT_ITEMS]: {
       metrics: [
         {
-          "id": "CUMULATIVE_SALES",
+          "metricId": "CUMULATIVE_SALES",
         },
         {
-          "id": "CUMULATIVE_ORDERS",
+          "metricId": "CUMULATIVE_ORDERS",
         },
       ],
     },
