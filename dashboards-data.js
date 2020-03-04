@@ -15,7 +15,8 @@ module.exports = {
           id: 2,
           widgetItems: [
             {
-              metrics: ["TOTAL_ITEMS_ORDERED", "TOTAL_SALES", "TOTAL_SHIPPING"],
+              id: 77,
+              metrics: ["TOTAL_ITEMS_ORDERED"],
               type: KPI,
               title: 'Abandoned shopping carts (filtered report)',
               visualization: "LINE",
