@@ -25,6 +25,40 @@ module.exports = {
               cumulative: true,
             }
           ]
+        },
+        {
+          id: 3,
+          widgetItems: [
+            {
+              id: 88,
+              metrics: ["METRIC_001", "METRIC_002"],
+              type: RECENT_ITEMS,
+              title: 'Recent items 001',
+            },
+            {
+              id: 98,
+              metrics: ["METRIC_002"],
+              type: RECENT_ITEMS,
+              title: 'Recent items 002',
+            },
+            {
+              id: 1298,
+              metrics: ["METRIC_001"],
+              type: RECENT_ITEMS,
+              title: 'Recent items 003',
+            }
+          ]
+        },
+        {
+          id: 6,
+          widgetItems: [
+            {
+              id: 388,
+              metrics: ["METRIC_001", "METRIC_002"],
+              type: RECENT_ITEMS,
+              title: 'Recent items 007',
+            }
+          ]
         }
       ]
     }
