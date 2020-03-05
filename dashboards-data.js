@@ -10,16 +10,21 @@ module.exports = {
     1: {
       id: 1,
       title: "Demo Dashboard",
-      reports: [
+      widgets: [
         {
           id: 2,
-          metrics: ["TOTAL_ITEMS_ORDERED", "TOTAL_SALES", "TOTAL_SHIPPING"],
-          type: KPI,
-          title: 'Abandoned shopping carts (filtered report)',
-          visualization: "LINE",
-          last24Hours: false,
-          projected: false,
-          cumulative: true,
+          widgetItems: [
+            {
+              id: 77,
+              metrics: ["TOTAL_ITEMS_ORDERED"],
+              type: KPI,
+              title: 'Abandoned shopping carts (filtered report)',
+              visualization: "LINE",
+              last24Hours: false,
+              projected: false,
+              cumulative: true,
+            }
+          ]
         }
       ]
     }

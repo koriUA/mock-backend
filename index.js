@@ -39,11 +39,54 @@ app.use((req, res, next) => {
   res.send(data);
 });*/
 
-/*
+
 app.get("/api/dashboards/:id", (req, res, next) => {
   console.log('GET /api/dashboard/:id');
   res.send(dashboardsData.data[1]);
-});*/
+});
+
+
+app.put("/api/dashboards/:id", (req, res, next) => {
+  const data = req.body;
+  data.widgets = data.widgets.map(el => {
+    if (!el.id) {
+      el.id = Math.floor(Math.random() * 10000000);
+    }
+    el.widgetItems.map(el1 => {
+      if (!el1.id) {
+        el1.id = Math.floor(Math.random() * 10000000);
+      }
+      return el1;
+    });
+    return el;
+  });
+  dashboardsData.data[req.params.id] = req.body;
+  res.send(req.body);
+});
+
+app.post("/api/dashboards", (req, res, next) => {
+  const data = req.body;
+  data.widgets = data.widgets.map(el => {
+    if (!el.id) {
+      el.id = Math.floor(Math.random() * 10000000);
+    }
+    el.widgetItems.map(el1 => {
+      if (!el1.id) {
+        el1.id = Math.floor(Math.random() * 10000000);
+      }
+      return el1;
+    });
+    return el;
+  });
+  const randDashboardId = Math.floor(Math.random() * 10000000);
+  data.id = randDashboardId;
+  dashboardsData.data[randDashboardId] = data;
+  res.send(req.body);
+});
+
+/*app.get("/report-details/:reportType", (req, res, next) => {
+  res.send(metricsData.data[req.params.reportType]);
+});
 
 /*app.get("/report-line/:id", (req, res, next) => {
   const arr = new Array(10).fill(1);
@@ -114,36 +157,7 @@ app.get("/conversion-funnel/:id", (req, res, next) => {
 });
 */
 
-/*
-app.post("/dashboards/:id", (req, res, next) => {
-  const data = req.body;
-  data.reports = data.reports.map(el => {
-    if (!el.id) {
-      el.id = Math.floor(Math.random() * 10000000);
-    }
-    return el;
-  });
-  dashboardsData.data[req.params.id] = req.body;
-  res.send(req.body);
-});
 
-app.put("/dashboards", (req, res, next) => {
-  const data = req.body;
-  data.reports = data.reports.map(el => {
-    if (!el.id) {
-      el.id = Math.floor(Math.random() * 10000000);
-    }
-    return el;
-  });
-  const randDashboardId = Math.floor(Math.random() * 10000000);
-  data.id = randDashboardId;
-  dashboardsData.data[randDashboardId] = data;
-  res.send(req.body);
-});
-*/
-/*app.get("/report-details/:reportType", (req, res, next) => {
-  res.send(metricsData.data[req.params.reportType]);
-});*/
 
 app.all("*", (req, res, next) => {
   const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
