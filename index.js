@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
-const MAX_DELAY = 0;
+const MAX_DELAY = 3000;
 const ERROR_POSIBILITY_PERCENT = 0;
 
 app.use((req, res, next) => {
@@ -156,6 +156,33 @@ app.get("/conversion-funnel/:id", (req, res, next) => {
   res.send(data.reverse());
 });
 */
+app.get("/api/reports-config/RECENT_ITEMS", (req, res, next) => {
+  res.send({
+    metrics: [
+      'Natural Search Terms',
+      'On-site Search Terms',
+      'Pages Browsed',
+      'Products Browsed',
+      'Products Sold',
+      'Referring Sites'
+    ]
+  });
+});
+
+app.get("/api/recent-items", (req, res, next) => {
+  res.send({
+    data: [
+      'data 001',
+      'data 002',
+      'data 003',
+      'data 004',
+      'data 005',
+      'data 006',
+    ]
+  });
+});
+
+
 
 
 
