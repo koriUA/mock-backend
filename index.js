@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
-/*app.get("/api/dashboards", (req, res, next) => {
+app.get("/api/dashboards", (req, res, next) => {
   console.log('GET /api/dashboards');
   const data = Object.keys(dashboardsData.data).map(key => {
     return {
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     };
   });
   res.send(data);
-});*/
+});
 
 
 app.get("/api/dashboards/:id", (req, res, next) => {
