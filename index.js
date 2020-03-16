@@ -172,12 +172,12 @@ app.get("/api/reports-config/RECENT_ITEMS", (req, res, next) => {
 app.get("/api/recent-items", (req, res, next) => {
   res.send({
     data: [
-      'data 001',
-      'data 002',
-      'data 003',
-      'data 004',
-      'data 005',
-      'data 006',
+      `data ${(Math.random() * 100000).toFixed(2)}`,
+      `data ${(Math.random() * 100000).toFixed(2)}`,
+      `data ${(Math.random() * 100000).toFixed(2)}`,
+      `data ${(Math.random() * 100000).toFixed(2)}`,
+      `data ${(Math.random() * 100000).toFixed(2)}`,
+      `data ${(Math.random() * 100000).toFixed(2)}`,
     ]
   });
 });
