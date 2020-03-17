@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
-const MAX_DELAY = 3000;
+const MAX_DELAY = 50;
 const ERROR_POSIBILITY_PERCENT = 0;
 
 app.use((req, res, next) => {
@@ -28,6 +28,7 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
+/*
 app.get("/api/dashboards", (req, res, next) => {
   console.log('GET /api/dashboards');
   const data = Object.keys(dashboardsData.data).map(key => {
@@ -63,7 +64,8 @@ app.put("/api/dashboards/:id", (req, res, next) => {
   dashboardsData.data[req.params.id] = req.body;
   res.send(req.body);
 });
-
+*/
+/*
 app.post("/api/dashboards", (req, res, next) => {
   const data = req.body;
   data.widgets = data.widgets.map(el => {
@@ -83,7 +85,7 @@ app.post("/api/dashboards", (req, res, next) => {
   dashboardsData.data[randDashboardId] = data;
   res.send(req.body);
 });
-
+*/
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
 });
@@ -156,6 +158,7 @@ app.get("/conversion-funnel/:id", (req, res, next) => {
   res.send(data.reverse());
 });
 */
+/*
 app.get("/api/reports-config/RECENT_ITEMS", (req, res, next) => {
   res.send({
     metrics: [
@@ -181,7 +184,7 @@ app.get("/api/recent-items", (req, res, next) => {
     ]
   });
 });
-
+*/
 
 
 
