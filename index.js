@@ -3,6 +3,7 @@ const dashboardsData = require("./dashboards-data");
 const metricsData = require("./metrics-data");
 const UtilsService = require("./utils");
 const request = require("request");
+const ReportOptions = require('./report-options-data');
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -27,6 +28,12 @@ app.use((req, res, next) => {
     next();
   }, Math.random() * MAX_DELAY);
 });
+
+app.get("/api/widget-item-config/:id", (req, res, next) => {
+  console.log('/api/widget-item-config/:id........');
+  res.send(ReportOptions.data);
+});
+
 
 /*
 app.get("/api/dashboards", (req, res, next) => {
