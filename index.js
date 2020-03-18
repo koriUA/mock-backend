@@ -46,7 +46,7 @@ app.get("/api/dashboards", (req, res, next) => {
   });
   res.send(data);
 });
-
+*/
 
 app.get("/api/dashboards/:id", (req, res, next) => {
   console.log('GET /api/dashboard/:id');
@@ -55,6 +55,7 @@ app.get("/api/dashboards/:id", (req, res, next) => {
 
 
 app.put("/api/dashboards/:id", (req, res, next) => {
+  console.log('PUT dashboard........................................');
   const data = req.body;
   data.widgets = data.widgets.map(el => {
     if (!el.id) {
@@ -68,12 +69,13 @@ app.put("/api/dashboards/:id", (req, res, next) => {
     });
     return el;
   });
-  dashboardsData.data[req.params.id] = req.body;
+  dashboardsData.data[1] = req.body;
   res.send(req.body);
 });
-*/
-/*
+
+
 app.post("/api/dashboards", (req, res, next) => {
+  console.log('POST dashboard........................................');
   const data = req.body;
   data.widgets = data.widgets.map(el => {
     if (!el.id) {
@@ -92,7 +94,7 @@ app.post("/api/dashboards", (req, res, next) => {
   dashboardsData.data[randDashboardId] = data;
   res.send(req.body);
 });
-*/
+
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
 });
@@ -194,9 +196,7 @@ app.get("/api/recent-items", (req, res, next) => {
 */
 
 
-
-
-app.all("*", (req, res, next) => {
+const defaultRoute = (req, res, next) => {
   const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
   console.log(`proxy to ${newUrl}${req.originalUrl}...`);
   request({
@@ -204,6 +204,10 @@ app.all("*", (req, res, next) => {
     uri: `${newUrl}${req.originalUrl}`,
     json: req.body
   }).pipe(res);
-});
+};
+app.get("*", defaultRoute);
+app.post("*", defaultRoute);
+app.put("*", defaultRoute);
+app.delete("*", defaultRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

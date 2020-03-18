@@ -7,60 +7,6 @@ const FILTERED_REPORTS = "FILTERED_REPORTS";
 
 module.exports = {
   data: {
-    1: {
-      id: 1,
-      title: "Demo Dashboard",
-      widgets: [
-        {
-          id: 2,
-          widgetItems: [
-            {
-              id: 77,
-              metrics: ["TOTAL_ITEMS_ORDERED"],
-              type: KPI,
-              title: 'Abandoned shopping carts (filtered report)',
-              visualization: "LINE",
-              last24Hours: false,
-              projected: false,
-              cumulative: true,
-            }
-          ]
-        },
-        {
-          id: 3,
-          widgetItems: [
-            {
-              id: 88,
-              metrics: ["METRIC_001", "METRIC_002"],
-              type: RECENT_ITEMS,
-              title: 'Recent items 001',
-            },
-            {
-              id: 98,
-              metrics: ["METRIC_002"],
-              type: RECENT_ITEMS,
-              title: 'Recent items 002',
-            },
-            {
-              id: 1298,
-              metrics: ["METRIC_001"],
-              type: RECENT_ITEMS,
-              title: 'Recent items 003',
-            }
-          ]
-        },
-        {
-          id: 6,
-          widgetItems: [
-            {
-              id: 388,
-              metrics: ["METRIC_001", "METRIC_002"],
-              type: RECENT_ITEMS,
-              title: 'Recent items 007',
-            }
-          ]
-        }
-      ]
-    }
+    1: {"id":133,"title":"Demo dashboard","widgets":[{"id":41,"widgetItems":[{"id":49,"title":"Report 0032","description":null,"metrics":["Last10OnsiteSearches"],"type":"RECENT_ITEMS","visualization":null,"cumulative":false,"last24Hours":false,"projected":false,"displayTop":5},{"id":51,"title":"Report 003","description":null,"metrics":["Last10PagesBrowsed"],"type":"RECENT_ITEMS","visualization":null,"cumulative":false,"last24Hours":false,"projected":false,"displayTop":5}]},{"id":39,"widgetItems":[{"id":43,"title":null,"description":null,"metrics":["BuyingSessionsPerSession","BuyingSessionsPerSession","TotalConversionsInitiated","TotalNewSessions"],"type":"KPI","visualization":"NUMBER","cumulative":false,"last24Hours":false,"projected":false,"displayTop":null}]},{"id":40,"widgetItems":[{"id":44,"title":null,"description":null,"metrics":["TotalConversionsInitiated","TotalOrders","TotalShipping","TotalRepeatedSessions","MmcSessions","TotalDirectLoadSessions","TotalSales","TotalPageViews"],"type":"KPI","visualization":"PROGRESS","cumulative":false,"last24Hours":false,"projected":false,"displayTop":null}]},{"id":43,"widgetItems":[{"id":48,"title":"KPI line","description":null,"metrics":["TotalShipping"],"type":"KPI","visualization":"LINE","cumulative":false,"last24Hours":true,"projected":true,"displayTop":null}]},{"id":45,"widgetItems":[{"id":53,"title":"KPI bar","description":null,"metrics":["TotalConversionsCompleted"],"type":"KPI","visualization":"BAR","cumulative":false,"last24Hours":true,"projected":true,"displayTop":null}]}]}
   }
 };
