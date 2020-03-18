@@ -28,6 +28,14 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
+app.post("/api/conversion-funnel", (req, res, next) => {
+  const { channels } = req.body;
+  console.log({ channels });
+  res.send({
+    data: UtilsService.getChannelData(channels)
+  });
+});
+
 /*
 app.get("/api/dashboards", (req, res, next) => {
   console.log('GET /api/dashboards');
@@ -185,9 +193,6 @@ app.get("/api/recent-items", (req, res, next) => {
   });
 });
 */
-
-
-
 
 app.all("*", (req, res, next) => {
   const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
