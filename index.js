@@ -39,8 +39,9 @@ app.get("/api/conversion-funnel", (req, res, next) => {
   });
 });
 
-app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
+app.get("/api/widget-item-config/:id", (req, res, next) => {
   console.log("/api/widget-item-config/:id........");
+
   res.send(ReportOptions.data);
 });
 
