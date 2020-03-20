@@ -4,6 +4,7 @@ const metricsData = require("./metrics-data");
 const UtilsService = require("./utils");
 const request = require("request");
 const ReportOptions = require('./report-options-data');
+const ReportData = require('./reports-data');
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -94,6 +95,13 @@ app.post("/api/dashboards", (req, res, next) => {
   dashboardsData.data[randDashboardId] = data;
   res.send(req.body);
 });
+
+app.post("/api/report-data", (req, res, next) => {
+  res.send({
+    data: ReportData[req.body.type]
+  });
+});
+
 
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
