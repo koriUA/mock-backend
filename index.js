@@ -30,11 +30,21 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
-app.get("/api/widget-item-config/:id", (req, res, next) => {
-  console.log('/api/widget-item-config/:id........');
-  res.send(ReportOptions.data);
+app.get("/api/conversion-funnel", (req, res, next) => {
+  const channels = ["Direct", "MMC", "Search", "Referral"];
+  res.send({
+    data: channels.map(channel => ({
+      channel,
+      channelData: UtilsService.getChannelData()
+    }))
+  });
 });
 
+app.get("/api/widget-item-config/:id", (req, res, next) => {
+  console.log("/api/widget-item-config/:id........");
+
+  res.send(ReportOptions.data);
+});
 
 /*
 app.get("/api/dashboards", (req, res, next) => {
@@ -50,13 +60,12 @@ app.get("/api/dashboards", (req, res, next) => {
 */
 
 app.get("/api/dashboards/:id", (req, res, next) => {
-  console.log('GET /api/dashboard/:id');
+  console.log("GET /api/dashboard/:id");
   res.send(dashboardsData.data[1]);
 });
 
-
 app.put("/api/dashboards/:id", (req, res, next) => {
-  console.log('PUT dashboard........................................');
+  console.log("PUT dashboard........................................");
   const data = req.body;
   data.widgets = data.widgets.map(el => {
     if (!el.id) {
@@ -74,9 +83,8 @@ app.put("/api/dashboards/:id", (req, res, next) => {
   res.send(req.body);
 });
 
-
 app.post("/api/dashboards", (req, res, next) => {
-  console.log('POST dashboard........................................');
+  console.log("POST dashboard........................................");
   const data = req.body;
   data.widgets = data.widgets.map(el => {
     if (!el.id) {
@@ -202,7 +210,6 @@ app.get("/api/recent-items", (req, res, next) => {
   });
 });
 */
-
 
 const defaultRoute = (req, res, next) => {
   const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";

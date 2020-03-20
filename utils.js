@@ -75,5 +75,19 @@ module.exports = {
 
   getPercents(a, b) {
     return ((a / b) * 100).toFixed(2);
+  },
+
+  getChannelData(channels) {
+    const total = Math.floor(Math.random() * 10000 + 10000);
+    const browse = total - 5000;
+    const shop = browse - 4000;
+    const buy = Math.abs(shop - 2000);
+
+    const channelData = { total, browse, shop, buy };
+
+    return Object.keys(channelData).map(key => ({
+      key,
+      value: channelData[key]
+    }));
   }
 };
