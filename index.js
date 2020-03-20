@@ -29,11 +29,13 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
-app.post("/api/conversion-funnel", (req, res, next) => {
-  const { channels } = req.body;
-  console.log({ channels });
+app.get("/api/conversion-funnel", (req, res, next) => {
+  const channels = ["Direct", "MMC", "Search", "Referral"];
   res.send({
-    data: UtilsService.getChannelData(channels)
+    data: channels.map(channel => ({
+      channel,
+      channelData: UtilsService.getChannelData()
+    }))
   });
 });
 

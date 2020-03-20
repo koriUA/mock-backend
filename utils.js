@@ -77,21 +77,17 @@ module.exports = {
     return ((a / b) * 100).toFixed(2);
   },
 
-  getChannelData(channel) {
-    
-    const total = Math.floor(Math.random() * 100 + 100);
-    const browse = total - Math.floor(Math.random() * 10 + 10);
-    const shop = browse - Math.floor(Math.random() * 20 + 20);
-    const buy = shop - Math.floor(Math.random() * 10 + 10);
+  getChannelData(channels) {
+    const total = Math.floor(Math.random() * 10000 + 10000);
+    const browse = total - 5000;
+    const shop = browse - 4000;
+    const buy = Math.abs(shop - 2000);
 
-    const channelData = {total, browse, shop, buy};
+    const channelData = { total, browse, shop, buy };
 
-    return {
-      channel,
-      data: Object.keys(channelData).map(key => ({
-        key,
-        value: channelData[key]
-      }))
-    };
+    return Object.keys(channelData).map(key => ({
+      key,
+      value: channelData[key]
+    }));
   }
 };
