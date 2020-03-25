@@ -31,19 +31,21 @@ app.use((req, res, next) => {
 
 app.get("/api/conversion-funnel", (req, res, next) => {
   const channels = ["Direct", "MMC", "Search", "Referral"];
+
+  const data = channels.map(channel => ({
+    channel,
+    channelData: UtilsService.getChannelData()
+  }));
   res.send({
-    data: channels.map(channel => ({
-      channel,
-      channelData: UtilsService.getChannelData()
-    }))
+    data
   });
 });
 
-app.get("/api/widget-item-config/:id", (req, res, next) => {
-  console.log("/api/widget-item-config/:id........");
+// app.get("/api/widget-item-config/:id", (req, res, next) => {
+//   console.log("/api/widget-item-config/:id........");
 
-  res.send(ReportOptions.data);
-});
+//   res.send(ReportOptions.data);
+// });
 
 /*
 app.get("/api/dashboards", (req, res, next) => {

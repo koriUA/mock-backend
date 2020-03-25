@@ -79,9 +79,9 @@ module.exports = {
 
   getChannelData(channels) {
     const total = Math.floor(Math.random() * 10000 + 10000);
-    const browse = total - 5000;
-    const shop = browse - 4000;
-    const buy = Math.abs(shop - 2000);
+    const browse = total - Math.floor(Math.random() * 3000 + 3000);
+    const shop = browse - Math.floor(Math.random() * 2000 + 2000);
+    const buy = Math.abs(shop - Math.floor(Math.random() * 1000 + 1000));
 
     const channelData = { total, browse, shop, buy };
 
