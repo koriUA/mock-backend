@@ -73,11 +73,25 @@ app.use((req, res, next) => {
 //   });
 // });
 
-app.get("/api/widget-item-config/:id", (req, res, next) => {
-  console.log("/api/widget-item-config/:id........");
-
+app.get("/api/widget-item-config/CONVERSION_EVENTS", (req, res, next) => {
   res.send(ReportOptions.data);
 });
+app.get("/api/widget-item-config/MARKETING_PROGRAMS", (req, res, next) => {
+  res.send(ReportOptions.data);
+});
+app.get("/api/widget-item-config/PRODUCTS", (req, res, next) => {
+  res.send(ReportOptions.data);
+});
+app.get("/api/widget-item-config/SEARCH_ENGINES", (req, res, next) => {
+  res.send(ReportOptions.data);
+});
+app.get("/api/widget-item-config/MARKETING_VENDORS", (req, res, next) => {
+  res.send(ReportOptions.data);
+});
+app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
+  res.send(ReportOptions.data);
+});
+
 
 app.get("/api/dashboards", (req, res, next) => {
   console.log("GET /api/dashboards");
