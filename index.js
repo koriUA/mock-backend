@@ -29,27 +29,57 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
-app.get("/api/conversion-funnel", (req, res, next) => {
-  const channels = ["Direct", "MMC", "Search", "Referral"];
-
-  const data = channels.map(channel => ({
-    channel,
-    channelData: UtilsService.getChannelData()
-  }));
-  res.send({
-    data
-  });
-});
-
-// app.get("/api/widget-item-config/:id", (req, res, next) => {
-//   console.log("/api/widget-item-config/:id........");
-
-//   res.send(ReportOptions.data);
+// app.get("/api/funnel", (req, res, next) => {
+//   res.send({
+//     data: [
+//       {
+//         name: "funnelTotal",
+//         channels: {
+//           funnelReferral: 0,
+//           funnelMMC: 567,
+//           funnelDirect: 1000,
+//           funnelNatural: 1045
+//         }
+//       },
+//       {
+//         name: "funnelBrowse",
+//         channels: {
+//           funnelReferral: 0,
+//           funnelMMC: 315,
+//           funnelDirect: 100,
+//           funnelNatural: 400
+//         }
+//       },
+//       {
+//         name: "funnelShop",
+//         channels: {
+//           funnelReferral: 0,
+//           funnelMMC: 60,
+//           funnelDirect: 10,
+//           funnelNatural: 200
+//         }
+//       },
+//       {
+//         name: "funnelBuy",
+//         channels: {
+//           funnelReferral: 0,
+//           funnelMMC: 31,
+//           funnelDirect: 1,
+//           funnelNatural: 10
+//         }
+//       }
+//     ]
+//   });
 // });
 
-/*
+app.get("/api/widget-item-config/:id", (req, res, next) => {
+  console.log("/api/widget-item-config/:id........");
+
+  res.send(ReportOptions.data);
+});
+
 app.get("/api/dashboards", (req, res, next) => {
-  console.log('GET /api/dashboards');
+  console.log("GET /api/dashboards");
   const data = Object.keys(dashboardsData.data).map(key => {
     return {
       id: dashboardsData.data[key].id,
@@ -58,52 +88,51 @@ app.get("/api/dashboards", (req, res, next) => {
   });
   res.send(data);
 });
-*/
 
-app.get("/api/dashboards/:id", (req, res, next) => {
-  console.log("GET /api/dashboard/:id");
-  res.send(dashboardsData.data[1]);
-});
+// app.get("/api/dashboards/:id", (req, res, next) => {
+//   console.log("GET /api/dashboard/:id");
+//   res.send(dashboardsData.data[1]);
+// });
 
-app.put("/api/dashboards/:id", (req, res, next) => {
-  console.log("PUT dashboard........................................");
-  const data = req.body;
-  data.widgets = data.widgets.map(el => {
-    if (!el.id) {
-      el.id = Math.floor(Math.random() * 10000000);
-    }
-    el.widgetItems.map(el1 => {
-      if (!el1.id) {
-        el1.id = Math.floor(Math.random() * 10000000);
-      }
-      return el1;
-    });
-    return el;
-  });
-  dashboardsData.data[1] = req.body;
-  res.send(req.body);
-});
+// app.put("/api/dashboards/:id", (req, res, next) => {
+//   console.log("PUT dashboard........................................");
+//   const data = req.body;
+//   data.widgets = data.widgets.map(el => {
+//     if (!el.id) {
+//       el.id = Math.floor(Math.random() * 10000000);
+//     }
+//     el.widgetItems.map(el1 => {
+//       if (!el1.id) {
+//         el1.id = Math.floor(Math.random() * 10000000);
+//       }
+//       return el1;
+//     });
+//     return el;
+//   });
+//   dashboardsData.data[1] = req.body;
+//   res.send(req.body);
+// });
 
-app.post("/api/dashboards", (req, res, next) => {
-  console.log("POST dashboard........................................");
-  const data = req.body;
-  data.widgets = data.widgets.map(el => {
-    if (!el.id) {
-      el.id = Math.floor(Math.random() * 10000000);
-    }
-    el.widgetItems.map(el1 => {
-      if (!el1.id) {
-        el1.id = Math.floor(Math.random() * 10000000);
-      }
-      return el1;
-    });
-    return el;
-  });
-  const randDashboardId = Math.floor(Math.random() * 10000000);
-  data.id = randDashboardId;
-  dashboardsData.data[randDashboardId] = data;
-  res.send(req.body);
-});
+// app.post("/api/dashboards", (req, res, next) => {
+//   console.log("POST dashboard........................................");
+//   const data = req.body;
+//   data.widgets = data.widgets.map(el => {
+//     if (!el.id) {
+//       el.id = Math.floor(Math.random() * 10000000);
+//     }
+//     el.widgetItems.map(el1 => {
+//       if (!el1.id) {
+//         el1.id = Math.floor(Math.random() * 10000000);
+//       }
+//       return el1;
+//     });
+//     return el;
+//   });
+//   const randDashboardId = Math.floor(Math.random() * 10000000);
+//   data.id = randDashboardId;
+//   dashboardsData.data[randDashboardId] = data;
+//   res.send(req.body);
+// });
 
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
