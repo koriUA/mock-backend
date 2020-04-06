@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
-const MAX_DELAY = 50;
+const MAX_DELAY = 100;
 const ERROR_POSIBILITY_PERCENT = 0;
 
 app.use((req, res, next) => {
@@ -60,7 +60,7 @@ app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
 });
 
 
-/*
+
 app.get("/api/dashboards", (req, res, next) => {
   console.log('GET /api/dashboards');
   const data = Object.keys(dashboardsData.data).map(key => {
@@ -71,11 +71,10 @@ app.get("/api/dashboards", (req, res, next) => {
   });
   res.send(data);
 });
-*/
 
 app.get("/api/dashboards/:id", (req, res, next) => {
   console.log("GET /api/dashboard/:id");
-  res.send(dashboardsData.data[1]);
+  res.send(dashboardsData.data[req.params.id]);
 });
 
 app.put("/api/dashboards/:id", (req, res, next) => {
@@ -93,7 +92,7 @@ app.put("/api/dashboards/:id", (req, res, next) => {
     });
     return el;
   });
-  dashboardsData.data[1] = req.body;
+  dashboardsData.data[req.params.id] = req.body;
   res.send(req.body);
 });
 
@@ -226,7 +225,7 @@ app.get("/api/recent-items", (req, res, next) => {
 */
 
 const defaultRoute = (req, res, next) => {
-  const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
+  const newUrl = "http://10.239.169.188:8080";
   console.log(`proxy to ${newUrl}${req.originalUrl}...`);
   request({
     method: req.method,
