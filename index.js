@@ -3,6 +3,7 @@ const dashboardsData = require("./dashboards-data");
 const metricsData = require("./metrics-data");
 const UtilsService = require("./utils");
 const request = require("request");
+const cors = require('cors');
 const ReportOptions = require('./report-options-data');
 const ReportData = require('./reports-data');
 
@@ -14,10 +15,16 @@ const port = 3099;
 const MAX_DELAY = 100;
 const ERROR_POSIBILITY_PERCENT = 0;
 
+
+app.use(cors({credentials: true, origin: 'http://localhost:3090'}));
+
+
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  res.setHeader("Access-Control-Allow-Methods", "*");
+  res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3090');
+  //res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
   if (req.method === "OPTIONS") {
     next();
     return;
@@ -30,6 +37,30 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
+/*
+app.get("/api/dashboards/:id", (req, res, next) => {
+  console.log("GET /api/dashboard/:id");
+  res.send(dashboardsData.data[req.params.id]);
+});
+*/
+/*
+app.post("/api/login", (req, res, next) => {
+  res.send({ok: true});
+})
+
+app.get("/api/dashboards", (req, res, next) => {
+  console.log('GET /api/dashboards');
+  const data = Object.keys(dashboardsData.data).map(key => {
+    return {
+      id: dashboardsData.data[key].id,
+      title: dashboardsData.data[key].title
+    };
+  });
+  res.send(data);
+});
+*/
+
+/*
 app.get("/api/conversion-funnel", (req, res, next) => {
   const channels = ["Direct", "MMC", "Search", "Referral"];
   res.send({
@@ -61,21 +92,7 @@ app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
 
 
 
-app.get("/api/dashboards", (req, res, next) => {
-  console.log('GET /api/dashboards');
-  const data = Object.keys(dashboardsData.data).map(key => {
-    return {
-      id: dashboardsData.data[key].id,
-      title: dashboardsData.data[key].title
-    };
-  });
-  res.send(data);
-});
 
-app.get("/api/dashboards/:id", (req, res, next) => {
-  console.log("GET /api/dashboard/:id");
-  res.send(dashboardsData.data[req.params.id]);
-});
 
 app.put("/api/dashboards/:id", (req, res, next) => {
   console.log("PUT dashboard........................................");
@@ -123,7 +140,7 @@ app.post("/api/report-data", (req, res, next) => {
   });
 });
 
-
+*/
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
 });
@@ -217,8 +234,8 @@ app.get("/api/recent-items", (req, res, next) => {
 */
 
 const defaultRoute = (req, res, next) => {
-  const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
-  // const newUrl = "http://10.239.169.188:8080";
+  //const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
+  const newUrl = "http://10.239.169.188:8080";
   console.log(`proxy to ${newUrl}${req.originalUrl}...`);
   request({
     method: req.method,
