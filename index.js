@@ -20,10 +20,10 @@ app.use(cors({credentials: true, origin: 'http://localhost:3090'}));
 
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3090');
+  //res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3090');
   //res.setHeader("Access-Control-Allow-Headers", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  //res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  //res.setHeader("Access-Control-Allow-Credentials", true);
 
   if (req.method === "OPTIONS") {
     next();
@@ -36,6 +36,14 @@ app.use((req, res, next) => {
     next();
   }, Math.random() * MAX_DELAY);
 });
+
+
+app.post("/api/report-data", (req, res, next) => {
+  res.send({
+    data: ReportData[req.body.reportType]
+  });
+});
+
 
 /*
 app.get("/api/dashboards/:id", (req, res, next) => {
@@ -134,11 +142,7 @@ app.post("/api/dashboards", (req, res, next) => {
   res.send(req.body);
 });
 
-app.post("/api/report-data", (req, res, next) => {
-  res.send({
-    data: ReportData[req.body.type]
-  });
-});
+
 
 */
 /*app.get("/report-details/:reportType", (req, res, next) => {
@@ -240,7 +244,8 @@ const defaultRoute = (req, res, next) => {
   request({
     method: req.method,
     uri: `${newUrl}${req.originalUrl}`,
-    json: req.body
+    json: req.body,
+    headers: req.headers,
   }).pipe(res);
 };
 app.get("*", defaultRoute);
