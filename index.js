@@ -3,16 +3,23 @@ const dashboardsData = require("./dashboards-data");
 const metricsData = require("./metrics-data");
 const UtilsService = require("./utils");
 const request = require("request");
-const ReportOptions = require('./report-options-data');
-const ReportData = require('./reports-data');
+const ReportOptions = require("./report-options-data");
+const ReportData = require("./reports-data");
 
 const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
-const MAX_DELAY = 50;
-const ERROR_POSIBILITY_PERCENT = 0;
+const MAX_DELAY = 1000;
+const ERROR_POSIBILITY_PERCENT = 20;
+const NULL_DATA_POSSIBILITY = 20;
+
+app.use((req, res, next) => {
+  setTimeout(() => {
+    next();
+  }, Math.random() * MAX_DELAY);
+});
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -22,12 +29,26 @@ app.use((req, res, next) => {
     next();
     return;
   }
-  if (Math.random() < ERROR_POSIBILITY_PERCENT / 100) {
+  if (
+    Math.random() < ERROR_POSIBILITY_PERCENT / 100 &&
+    (req.originalUrl.includes("api/funnel") ||
+      req.originalUrl.includes("api/kpi") ||
+      req.originalUrl.includes("api/recent-items"))
+  ) {
     return res.sendStatus(500);
   }
-  setTimeout(() => {
-    next();
-  }, Math.random() * MAX_DELAY);
+  if (
+    Math.random() < NULL_DATA_POSSIBILITY / 100 &&
+    (req.originalUrl.includes("api/funnel") ||
+      req.originalUrl.includes("api/kpi") ||
+      req.originalUrl.includes("api/recent-items"))
+  ) {
+    return res.status(200).send({
+      data: null,
+    });
+  }
+
+  next();
 });
 
 // app.get("/api/funnel", (req, res, next) => {
@@ -92,17 +113,16 @@ app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
   res.send(ReportOptions.data);
 });
 
-
-app.get("/api/dashboards", (req, res, next) => {
-  console.log("GET /api/dashboards");
-  const data = Object.keys(dashboardsData.data).map(key => {
-    return {
-      id: dashboardsData.data[key].id,
-      title: dashboardsData.data[key].title
-    };
-  });
-  res.send(data);
-});
+// app.get("/api/dashboards", (req, res, next) => {
+//   console.log("GET /api/dashboards");
+//   const data = Object.keys(dashboardsData.data).map(key => {
+//     return {
+//       id: dashboardsData.data[key].id,
+//       title: dashboardsData.data[key].title
+//     };
+//   });
+//   res.send(data);
+// });
 
 // app.get("/api/dashboards/:id", (req, res, next) => {
 //   console.log("GET /api/dashboard/:id");
@@ -151,10 +171,9 @@ app.get("/api/dashboards", (req, res, next) => {
 
 app.post("/api/report-data", (req, res, next) => {
   res.send({
-    data: ReportData[req.body.type]
+    data: ReportData[req.body.type],
   });
 });
-
 
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
@@ -262,7 +281,7 @@ const defaultRoute = (req, res, next) => {
   request({
     method: req.method,
     uri: `${newUrl}${req.originalUrl}`,
-    json: req.body
+    json: req.body,
   }).pipe(res);
 };
 app.get("*", defaultRoute);
