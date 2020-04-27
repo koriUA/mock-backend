@@ -37,13 +37,13 @@ app.use((req, res, next) => {
   }, Math.random() * MAX_DELAY);
 });
 
-
+/*
 app.post("/api/report-data", (req, res, next) => {
   res.send({
     data: ReportData[req.body.reportType]
   });
 });
-
+*/
 
 /*
 app.get("/api/dashboards/last-updated-time/:dashboardType", (req, res, next) => {
