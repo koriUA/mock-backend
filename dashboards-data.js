@@ -8,7 +8,7 @@ const FILTERED_REPORTS = "FILTERED_REPORTS";
 module.exports = {
   data: {
     1: {
-      type: 'REAL_TIME_DASHBOARD',
+      type: 'REALTIME_DASHBOARD',
       "id": 1, "title": "Demo dashboard RTM", "widgets": [
         {
           "id": 41, "widgetItems": [

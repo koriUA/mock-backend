@@ -46,6 +46,13 @@ app.post("/api/report-data", (req, res, next) => {
 
 
 /*
+app.get("/api/dashboards/last-updated-time/:dashboardType", (req, res, next) => {
+  res.send(`${Math.random()}`);
+});
+*/
+
+
+/*
 app.get("/api/dashboards/:id", (req, res, next) => {
   console.log("GET /api/dashboard/:id");
   res.send(dashboardsData.data[req.params.id]);
