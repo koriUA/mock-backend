@@ -244,6 +244,37 @@ app.get("/api/recent-items", (req, res, next) => {
 });
 */
 
+app.get("/api/dashboards/subclients", (req, res, next) => {
+  res.send([
+    {
+      id: 300000001,
+      name: 'bikehut.com',
+      isMaster: true
+    },
+    {
+      id: 3000455064,
+      name: 'halfords.com',
+      isMaster: false
+    },
+    {
+      id: 3000455064,
+      name: 'google.com',
+      isMaster: false
+    },
+    {
+      id: 3000455532,
+      name: 'facebook.com',
+      isMaster: false
+    },
+    {
+      id: 3000445675,
+      name: 'youtube.com',
+      isMaster: false
+    }
+  ]);
+});
+
+
 const defaultRoute = (req, res, next) => {
   //const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
   const newUrl = "http://10.239.169.188:8080";
