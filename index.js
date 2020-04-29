@@ -13,8 +13,8 @@ app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
 const MAX_DELAY = 1000;
-const ERROR_POSIBILITY_PERCENT = 20;
-const NULL_DATA_POSSIBILITY = 20;
+const ERROR_POSIBILITY_PERCENT = 0;
+const NULL_DATA_POSSIBILITY = 0;
 
 app.use((req, res, next) => {
   setTimeout(() => {
@@ -53,6 +53,106 @@ app.use((req, res, next) => {
     });
   }
 
+  next();
+});
+
+app.post("api/kpi/multisite", (req, res, next) => {
+  return res.status(200).send({
+    data: {
+      "30000001": {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+      "30004001": {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+      TOTAL_MASTER: {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+      TOTAL_SELECTED: {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+    },
+  });
+});
+
+app.get("api/widget-item-config/ED_KPI", (req, res, next) => {
+  req.url = "api/widget-item-config/RT_KPI";
   next();
 });
 
