@@ -82,9 +82,13 @@ app.get("/api/dashboards/subclients", (req, res, next) => {
   ]);
 });
 
-app.get("/api/dashboards/:id", (req, res, next) => {
+app.get("/api/dashboards/1", (req, res, next) => {
   console.log("GET /api/dashboard/:id");
-  res.send(dashboardsData.data[req.params.id]);
+  res.send(dashboardsData.data[1]);
+});
+
+app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
+  res.send(ReportOptions.data);
 });
 
 /*
@@ -115,9 +119,7 @@ app.get("/api/conversion-funnel", (req, res, next) => {
   });
 });
 
-app.get("/api/widget-item-config/CONVERSION_EVENTS", (req, res, next) => {
-  res.send(ReportOptions.data);
-});
+
 app.get("/api/widget-item-config/MARKETING_PROGRAMS", (req, res, next) => {
   res.send(ReportOptions.data);
 });
