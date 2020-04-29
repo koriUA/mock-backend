@@ -52,12 +52,41 @@ app.get("/api/dashboards/last-updated-time/:dashboardType", (req, res, next) => 
 */
 
 
-/*
+app.get("/api/dashboards/subclients", (req, res, next) => {
+  res.send([
+    {
+      id: 300000001,
+      name: 'bikehut.com',
+      isMaster: true
+    },
+    {
+      id: 3000455064,
+      name: 'halfords.com',
+      isMaster: false
+    },
+    {
+      id: 3000455064,
+      name: 'google.com',
+      isMaster: false
+    },
+    {
+      id: 3000455532,
+      name: 'facebook.com',
+      isMaster: false
+    },
+    {
+      id: 3000445675,
+      name: 'youtube.com',
+      isMaster: false
+    }
+  ]);
+});
+
 app.get("/api/dashboards/:id", (req, res, next) => {
   console.log("GET /api/dashboard/:id");
   res.send(dashboardsData.data[req.params.id]);
 });
-*/
+
 /*
 app.post("/api/login", (req, res, next) => {
   res.send({ok: true});
@@ -106,7 +135,7 @@ app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
 });
 
 
-
+*/
 
 
 app.put("/api/dashboards/:id", (req, res, next) => {
@@ -151,7 +180,7 @@ app.post("/api/dashboards", (req, res, next) => {
 
 
 
-*/
+
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
 });
@@ -244,35 +273,6 @@ app.get("/api/recent-items", (req, res, next) => {
 });
 */
 
-app.get("/api/dashboards/subclients", (req, res, next) => {
-  res.send([
-    {
-      id: 300000001,
-      name: 'bikehut.com',
-      isMaster: true
-    },
-    {
-      id: 3000455064,
-      name: 'halfords.com',
-      isMaster: false
-    },
-    {
-      id: 3000455064,
-      name: 'google.com',
-      isMaster: false
-    },
-    {
-      id: 3000455532,
-      name: 'facebook.com',
-      isMaster: false
-    },
-    {
-      id: 3000445675,
-      name: 'youtube.com',
-      isMaster: false
-    }
-  ]);
-});
 
 
 const defaultRoute = (req, res, next) => {
