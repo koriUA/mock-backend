@@ -51,7 +51,7 @@ app.get("/api/dashboards/last-updated-time/:dashboardType", (req, res, next) => 
 });
 */
 
-
+/*
 app.get("/api/dashboards/subclients", (req, res, next) => {
   res.send([
     {
@@ -81,7 +81,9 @@ app.get("/api/dashboards/subclients", (req, res, next) => {
     }
   ]);
 });
+*/
 
+/*
 app.get("/api/dashboards/1", (req, res, next) => {
   console.log("GET /api/dashboard/:id");
   res.send(dashboardsData.data[1]);
@@ -89,7 +91,7 @@ app.get("/api/dashboards/1", (req, res, next) => {
 
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
   res.send(ReportOptions.data);
-});
+});*/
 
 /*
 app.post("/api/login", (req, res, next) => {
@@ -139,7 +141,7 @@ app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
 
 */
 
-
+/*
 app.put("/api/dashboards/:id", (req, res, next) => {
   console.log("PUT dashboard........................................");
   const data = req.body;
@@ -179,7 +181,7 @@ app.post("/api/dashboards", (req, res, next) => {
   dashboardsData.data[randDashboardId] = data;
   res.send(req.body);
 });
-
+*/
 
 
 
