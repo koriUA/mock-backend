@@ -301,13 +301,13 @@ app.put("/api/dashboards/:id", (req, res, next) => {
 //   dashboardsData.data[randDashboardId] = data;
 //   res.send(req.body);
 // });
-
+/*
 app.post("/api/report-data", (req, res, next) => {
   res.send({
     data: ReportData[req.body.type],
   });
 });
-
+*/
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
 });
