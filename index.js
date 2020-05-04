@@ -400,6 +400,11 @@ app.get("/api/recent-items", (req, res, next) => {
 });
 */
 
+app.post("/api/reports/ed", (req, res, next) => {
+  res.send({"columnsOrder":["ConversionEventCategoryId","ConversionEventId","TotalConversionPoints","TotalConversionsInitiated","TotalConversionsCompleted"],"data":[{"TotalConversionPoints":13900.0,"ConversionEventId":"set email alerts","TotalConversionsCompleted":24.0,"TotalConversionsInitiated":24.0,"ConversionEventCategoryId":"category9"},{"TotalConversionPoints":12800.0,"ConversionEventId":"sign up for webinar","TotalConversionsCompleted":23.0,"TotalConversionsInitiated":23.0,"ConversionEventCategoryId":"category1"},{"TotalConversionPoints":12100.0,"ConversionEventId":"special registration","TotalConversionsCompleted":21.0,"TotalConversionsInitiated":21.0,"ConversionEventCategoryId":"category9"},{"TotalConversionPoints":10900.0,"ConversionEventId":"newsletter signup","TotalConversionsCompleted":20.0,"TotalConversionsInitiated":20.0,"ConversionEventCategoryId":"category6"},{"TotalConversionPoints":10900.0,"ConversionEventId":"set email alerts","TotalConversionsCompleted":20.0,"TotalConversionsInitiated":20.0,"ConversionEventCategoryId":"category4"}]});
+});
+
+
 const defaultRoute = (req, res, next) => {
   //const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
   const newUrl = "http://10.239.169.188:8080";
