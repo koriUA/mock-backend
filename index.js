@@ -56,7 +56,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("api/kpi/multisite", (req, res, next) => {
+app.post("/api/kpi/multisite", (req, res, next) => {
+  console.log("handled");
   return res.status(200).send({
     data: {
       "30000001": {
@@ -148,13 +149,14 @@ app.post("api/kpi/multisite", (req, res, next) => {
         ],
       },
     },
-    });
+  });
+});
 /*
 app.post("/api/report-data", (req, res, next) => {
   res.send({
     data: ReportData[req.body.reportType]
   });
-
+});
 */
 
 /*
@@ -163,10 +165,9 @@ app.get("/api/dashboards/last-updated-time/:dashboardType", (req, res, next) => 
 });
 */
 
-app.get("api/widget-item-config/ED_KPI", (req, res, next) => {
-  req.url = "api/widget-item-config/RT_KPI";
-  next();
-});
+// app.get("/api/widget-item-config/ED_KPI", (req, res, next) => {
+//   return res.redirect("api/widget-item-config/RT_KPI");
+// });
 
 // app.post("/api/report-data", (req, res, next) => {
 //   res.send({
@@ -448,36 +449,35 @@ app.get("/api/recent-items", (req, res, next) => {
 });
 */
 
-app.get("/api/dashboards/subclients", (req, res, next) => {
-  res.send([
-    {
-      id: 300000001,
-      name: 'bikehut.com',
-      isMaster: true
-    },
-    {
-      id: 3000455064,
-      name: 'halfords.com',
-      isMaster: false
-    },
-    {
-      id: 3000455064,
-      name: 'google.com',
-      isMaster: false
-    },
-    {
-      id: 3000455532,
-      name: 'facebook.com',
-      isMaster: false
-    },
-    {
-      id: 3000445675,
-      name: 'youtube.com',
-      isMaster: false
-    }
-  ]);
-});
-
+// app.get("/api/dashboards/subclients", (req, res, next) => {
+//   res.send([
+//     {
+//       id: 300000001,
+//       name: "bikehut.com",
+//       isMaster: true,
+//     },
+//     {
+//       id: 3000455064,
+//       name: "halfords.com",
+//       isMaster: false,
+//     },
+//     {
+//       id: 3000455064,
+//       name: "google.com",
+//       isMaster: false,
+//     },
+//     {
+//       id: 3000455532,
+//       name: "facebook.com",
+//       isMaster: false,
+//     },
+//     {
+//       id: 3000445675,
+//       name: "youtube.com",
+//       isMaster: false,
+//     },
+//   ]);
+// });
 
 const defaultRoute = (req, res, next) => {
   //const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
