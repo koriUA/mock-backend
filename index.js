@@ -3,21 +3,26 @@ const dashboardsData = require("./dashboards-data");
 const metricsData = require("./metrics-data");
 const UtilsService = require("./utils");
 const request = require("request");
-const cors = require('cors');
-const ReportOptions = require('./report-options-data');
-const ReportData = require('./reports-data');
+const cors = require("cors");
+const ReportOptions = require("./report-options-data");
+const ReportData = require("./reports-data");
 
 const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 const port = 3099;
 
-const MAX_DELAY = 100;
+const MAX_DELAY = 1000;
 const ERROR_POSIBILITY_PERCENT = 0;
+const NULL_DATA_POSSIBILITY = 0;
 
+app.use((req, res, next) => {
+  setTimeout(() => {
+    next();
+  }, Math.random() * MAX_DELAY);
+});
 
-app.use(cors({credentials: true, origin: 'http://localhost:3090'}));
-
+app.use(cors({ credentials: true, origin: "http://localhost:3090" }));
 
 app.use((req, res, next) => {
   //res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3090');
@@ -29,14 +34,123 @@ app.use((req, res, next) => {
     next();
     return;
   }
-  if (Math.random() < ERROR_POSIBILITY_PERCENT / 100) {
+  if (
+    Math.random() < ERROR_POSIBILITY_PERCENT / 100 &&
+    (req.originalUrl.includes("api/funnel") ||
+      req.originalUrl.includes("api/kpi") ||
+      req.originalUrl.includes("api/recent-items"))
+  ) {
     return res.sendStatus(500);
   }
-  setTimeout(() => {
-    next();
-  }, Math.random() * MAX_DELAY);
+  if (
+    Math.random() < NULL_DATA_POSSIBILITY / 100 &&
+    (req.originalUrl.includes("api/funnel") ||
+      req.originalUrl.includes("api/kpi") ||
+      req.originalUrl.includes("api/recent-items"))
+  ) {
+    return res.status(200).send({
+      data: null,
+    });
+  }
+
+  next();
 });
 
+app.post("/api/kpi/multisite", (req, res, next) => {
+  console.log("handled");
+  return res.status(200).send({
+    data: {
+      "30000001": {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+      "30004001": {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+      TOTAL_MASTER: {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+      TOTAL_SELECTED: {
+        data: [
+          {
+            time: 1587738380692,
+            value: 1,
+          },
+          {
+            time: 1587824780692,
+            value: 2,
+          },
+        ],
+        comparisonData: [
+          {
+            time: 1587133630211,
+            value: 3,
+          },
+          {
+            time: 1587220030211,
+            value: 4,
+          },
+        ],
+      },
+    },
+  });
+});
 /*
 app.post("/api/report-data", (req, res, next) => {
   res.send({
@@ -51,38 +165,46 @@ app.get("/api/dashboards/last-updated-time/:dashboardType", (req, res, next) => 
 });
 */
 
+// app.get("/api/widget-item-config/ED_KPI", (req, res, next) => {
+//   return res.redirect("api/widget-item-config/RT_KPI");
+// });
+
+// app.post("/api/report-data", (req, res, next) => {
+//   res.send({
+//     data: ReportData[req.body.reportType]
+//   });
+// });
 /*
 app.get("/api/dashboards/subclients", (req, res, next) => {
   res.send([
     {
       id: 300000001,
-      name: 'bikehut.com',
-      isMaster: true
+      name: "bikehut.com",
+      isMaster: true,
     },
     {
       id: 3000455064,
-      name: 'halfords.com',
-      isMaster: false
+      name: "halfords.com",
+      isMaster: false,
     },
     {
       id: 3000455064,
-      name: 'google.com',
-      isMaster: false
+      name: "google.com",
+      isMaster: false,
     },
     {
       id: 3000455532,
-      name: 'facebook.com',
-      isMaster: false
+      name: "facebook.com",
+      isMaster: false,
     },
     {
       id: 3000445675,
-      name: 'youtube.com',
-      isMaster: false
-    }
+      name: "youtube.com",
+      isMaster: false,
+    },
   ]);
 });
 */
-
 /*
 app.get("/api/dashboards/1", (req, res, next) => {
   console.log("GET /api/dashboard/:id");
@@ -121,7 +243,6 @@ app.get("/api/conversion-funnel", (req, res, next) => {
   });
 });
 
-
 app.get("/api/widget-item-config/MARKETING_PROGRAMS", (req, res, next) => {
   res.send(ReportOptions.data);
 });
@@ -140,16 +261,15 @@ app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
 
 
 */
-
 /*
 app.put("/api/dashboards/:id", (req, res, next) => {
   console.log("PUT dashboard........................................");
   const data = req.body;
-  data.widgets = data.widgets.map(el => {
+  data.widgets = data.widgets.map((el) => {
     if (!el.id) {
       el.id = Math.floor(Math.random() * 10000000);
     }
-    el.widgetItems.map(el1 => {
+    el.widgetItems.map((el1) => {
       if (!el1.id) {
         el1.id = Math.floor(Math.random() * 10000000);
       }
@@ -160,30 +280,33 @@ app.put("/api/dashboards/:id", (req, res, next) => {
   dashboardsData.data[req.params.id] = req.body;
   res.send(req.body);
 });
-
-app.post("/api/dashboards", (req, res, next) => {
-  console.log("POST dashboard........................................");
-  const data = req.body;
-  data.widgets = data.widgets.map(el => {
-    if (!el.id) {
-      el.id = Math.floor(Math.random() * 10000000);
-    }
-    el.widgetItems.map(el1 => {
-      if (!el1.id) {
-        el1.id = Math.floor(Math.random() * 10000000);
-      }
-      return el1;
-    });
-    return el;
-  });
-  const randDashboardId = Math.floor(Math.random() * 10000000);
-  data.id = randDashboardId;
-  dashboardsData.data[randDashboardId] = data;
-  res.send(req.body);
-});
 */
+// app.post("/api/dashboards", (req, res, next) => {
+//   console.log("POST dashboard........................................");
+//   const data = req.body;
+//   data.widgets = data.widgets.map(el => {
+//     if (!el.id) {
+//       el.id = Math.floor(Math.random() * 10000000);
+//     }
+//     el.widgetItems.map(el1 => {
+//       if (!el1.id) {
+//         el1.id = Math.floor(Math.random() * 10000000);
+//       }
+//       return el1;
+//     });
+//     return el;
+//   });
+//   const randDashboardId = Math.floor(Math.random() * 10000000);
+//   data.id = randDashboardId;
+//   dashboardsData.data[randDashboardId] = data;
+//   res.send(req.body);
+// });
 
-
+app.post("/api/report-data", (req, res, next) => {
+  res.send({
+    data: ReportData[req.body.type],
+  });
+});
 
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
@@ -276,8 +399,6 @@ app.get("/api/recent-items", (req, res, next) => {
   });
 });
 */
-
-
 
 const defaultRoute = (req, res, next) => {
   //const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
