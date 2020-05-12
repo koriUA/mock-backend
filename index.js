@@ -175,44 +175,14 @@ app.get("/api/dashboards/last-updated-time/:dashboardType", (req, res, next) => 
 //   });
 // });
 
-app.get("/api/dashboards/subclients", (req, res, next) => {
-  res.send([
-    {
-      id: 300000001,
-      name: "bikehut.com",
-      isMaster: true,
-    },
-    {
-      id: 3000455064,
-      name: "halfords.com",
-      isMaster: false,
-    },
-    {
-      id: 3000455064,
-      name: "google.com",
-      isMaster: false,
-    },
-    {
-      id: 3000455532,
-      name: "facebook.com",
-      isMaster: false,
-    },
-    {
-      id: 3000445675,
-      name: "youtube.com",
-      isMaster: false,
-    },
-  ]);
-});
+// app.get("/api/dashboards/1", (req, res, next) => {
+//   console.log("GET /api/dashboard/:id");
+//   res.send(dashboardsData.data[1]);
+// });
 
-app.get("/api/dashboards/1", (req, res, next) => {
-  console.log("GET /api/dashboard/:id");
-  res.send(dashboardsData.data[1]);
-});
-
-app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
-  res.send(ReportOptions.data);
-});
+// app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
+//   res.send(ReportOptions.data);
+// });
 
 /*
 app.post("/api/login", (req, res, next) => {
@@ -261,24 +231,24 @@ app.get("/api/widget-item-config/RECENT_ITEMS", (req, res, next) => {
 
 */
 
-app.put("/api/dashboards/:id", (req, res, next) => {
-  console.log("PUT dashboard........................................");
-  const data = req.body;
-  data.widgets = data.widgets.map((el) => {
-    if (!el.id) {
-      el.id = Math.floor(Math.random() * 10000000);
-    }
-    el.widgetItems.map((el1) => {
-      if (!el1.id) {
-        el1.id = Math.floor(Math.random() * 10000000);
-      }
-      return el1;
-    });
-    return el;
-  });
-  dashboardsData.data[req.params.id] = req.body;
-  res.send(req.body);
-});
+// app.put("/api/dashboards/:id", (req, res, next) => {
+//   console.log("PUT dashboard........................................");
+//   const data = req.body;
+//   data.widgets = data.widgets.map((el) => {
+//     if (!el.id) {
+//       el.id = Math.floor(Math.random() * 10000000);
+//     }
+//     el.widgetItems.map((el1) => {
+//       if (!el1.id) {
+//         el1.id = Math.floor(Math.random() * 10000000);
+//       }
+//       return el1;
+//     });
+//     return el;
+//   });
+//   dashboardsData.data[req.params.id] = req.body;
+//   res.send(req.body);
+// });
 
 // app.post("/api/dashboards", (req, res, next) => {
 //   console.log("POST dashboard........................................");
@@ -301,11 +271,11 @@ app.put("/api/dashboards/:id", (req, res, next) => {
 //   res.send(req.body);
 // });
 
-app.post("/api/report-data", (req, res, next) => {
-  res.send({
-    data: ReportData[req.body.type],
-  });
-});
+// app.post("/api/report-data", (req, res, next) => {
+//   res.send({
+//     data: ReportData[req.body.type],
+//   });
+// });
 
 /*app.get("/report-details/:reportType", (req, res, next) => {
   res.send(metricsData.data[req.params.reportType]);
