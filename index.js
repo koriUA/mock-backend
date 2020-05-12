@@ -205,11 +205,13 @@ app.get("/api/dashboards/subclients", (req, res, next) => {
   ]);
 });
 */
-
+/*
 app.get("/api/dashboards/1", (req, res, next) => {
   console.log("GET /api/dashboard/:id");
   res.send(dashboardsData.data[1]);
 });
+*/
+
 /*
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
   res.send(ReportOptions.data);
@@ -402,6 +404,7 @@ app.get("/api/recent-items", (req, res, next) => {
 app.post("/api/reports/ed", (req, res, next) => {
   res.send({"columnsOrder":["ConversionEventCategoryId","ConversionEventId","TotalConversionPoints","TotalConversionsInitiated","TotalConversionsCompleted"],"data":[{"TotalConversionPoints":13900.0,"ConversionEventId":"set email alerts","TotalConversionsCompleted":24.0,"TotalConversionsInitiated":24.0,"ConversionEventCategoryId":"category9"},{"TotalConversionPoints":12800.0,"ConversionEventId":"sign up for webinar","TotalConversionsCompleted":23.0,"TotalConversionsInitiated":23.0,"ConversionEventCategoryId":"category1"},{"TotalConversionPoints":12100.0,"ConversionEventId":"special registration","TotalConversionsCompleted":21.0,"TotalConversionsInitiated":21.0,"ConversionEventCategoryId":"category9"},{"TotalConversionPoints":10900.0,"ConversionEventId":"newsletter signup","TotalConversionsCompleted":20.0,"TotalConversionsInitiated":20.0,"ConversionEventCategoryId":"category6"},{"TotalConversionPoints":10900.0,"ConversionEventId":"set email alerts","TotalConversionsCompleted":20.0,"TotalConversionsInitiated":20.0,"ConversionEventCategoryId":"category4"}]});
 });
+
 
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
   res.send({"metrics":{"ED_TOPLINE_SUMMARY":[{"metricId":"NumberOfAbandonedShoppingCarts"},{"metricId":"AvgItemsInShoppingCart"},{"metricId":"AverageNewSessionLength"},{"metricId":"AverageOrderValue"},{"metricId":"AverageRepeatSessionLength"},{"metricId":"AverageSessionLength"},{"metricId":"ShippingPerOrder"},{"metricId":"AverageTimePerPage"},{"metricId":"BounceRate"},{"metricId":"BuyingSessionsCompleted"},{"metricId":"TotalConversionPoints"},{"metricId":"EventsPointsPerSession"},{"metricId":"EventsPerSession"},{"metricId":"TotalConversionsCompleted"},{"metricId":"ItemAbandonmentRate"},{"metricId":"TotalItemsInShoppingCart"},{"metricId":"TotalItemsOrdered"},{"metricId":"TotalOnSiteSearch"},{"metricId":"TotalOrders"},{"metricId":"OrdersPerSession"},{"metricId":"TotalPageViews"},{"metricId":"PageViewsPerSession"},{"metricId":"TotalProductViews"},{"metricId":"TotalSales"},{"metricId":"TotalSessions"},{"metricId":"TotalShipping"},{"metricId":"ShoppingCartAbandonmentRate"},{"metricId":"TotalTrackedItemsOrdered"},{"metricId":"TotalTrackedOrders"},{"metricId":"TotalTrackedPageViews"},{"metricId":"TotalTrackedProductViews"},{"metricId":"TotalTrackedSales"},{"metricId":"TotalTrackedShipping"},{"metricId":"TotalBuyers"},{"metricId":"TotalVisitors"}],"ED_CHANNELS_SUMMARY":[{"metricId":"TotalSales","attribution":true},{"metricId":"TotalShipping","attribution":true},{"metricId":"AverageShipping","attribution":true},{"metricId":"TotalSessions","attribution":true},{"metricId":"BuyingSessionsCompleted","attribution":true},{"metricId":"TotalOrders","attribution":true},{"metricId":"AverageOrderValue","attribution":true},{"metricId":"AverageSessionLength","attribution":true},{"metricId":"TotalPageViews","attribution":true},{"metricId":"PageViewsPerSession","attribution":false},{"metricId":"TotalOnePageSessions","attribution":true},{"metricId":"BounceRate","attribution":true},{"metricId":"Events","attribution":true},{"metricId":"EventSessions","attribution":true},{"metricId":"TotalConversionPoints","attribution":true},{"metricId":"EventsPointsPerSession","attribution":false},{"metricId":"TargetSales","attribution":true},{"metricId":"TotalBuyers","attribution":true},{"metricId":"NewBuyers","attribution":true},{"metricId":"NewBuyerSales","attribution":true},{"metricId":"TotalVisitors","attribution":true},{"metricId":"NewVisitors","attribution":true}]},"attributions":[{"id":108,"direction":"BACKWARD","duration":-1,"method":"LAST_CLICK"},{"id":109,"direction":"BACKWARD","duration":1,"method":"LAST_CLICK"},{"id":130,"direction":"FORWARD","duration":11,"method":"AVERAGE_CLICK"},{"id":134,"direction":"BACKWARD","duration":16,"method":"LAST_CLICK"},{"id":173,"direction":"BACKWARD","duration":9,"method":"FIRST_CLICK"},{"id":174,"direction":"BACKWARD","duration":12,"method":"FIRST_CLICK"},{"id":175,"direction":"FORWARD","duration":13,"method":"FIRST_CLICK"},{"id":176,"direction":"FORWARD","duration":7,"method":"LAST_CLICK"}]});
