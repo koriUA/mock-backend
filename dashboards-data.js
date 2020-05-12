@@ -8,127 +8,57 @@ const FILTERED_REPORTS = "FILTERED_REPORTS";
 module.exports = {
   data: {
     1: {
-      "subClients": [3000455064, 3000455532],
-      "id": 1,
+      "id": 18,
+      "title": "ED dashboard 001",
       "dashboardType": "ENTERPRISE_DASHBOARD",
-      "title": "Dashboard with all widgets",
-      "widgets": [{
-        "id": 57,
-        "widgetItems": [{
-          "type": "ED_REPORT",
-          "id": 77,
-          "title": "default title2ff",
-          "reportType": "ED_TOPLINE_SUMMARY",
-          "metrics": [],
-          "displayTop": 5
-        }, {
-          "type": "ED_REPORT",
-          "id": 81,
-          "title": "default title",
-          "reportType": "ED_MARKETING_VENDORS",
-          "metrics": ["TotalConversionPoints"],
-          "displayTop": 5
-        }, {
-          "type": "ED_REPORT",
-          "id": 82,
-          "title": "default title",
-          "reportType": "ED_CHANNELS_SUMMARY",
-          "metrics": ["TotalOrders", "TotalConversionPoints"],
-          "displayTop": 5
-        }]
-      }, {
-        "id": 59,
-        "widgetItems": [{
-          "type": "RT_KPI",
-          "id": 64,
-          "title": "MmcSessions",
-          "metrics": ["AverageSessionLength", "AvgItemsInShoppingCart"],
-          "visualization": "NUMBER",
-          "cumulative": false,
-          "last24Hours": false,
-          "projected": false
-        }]
-      }, {
-        "id": 64,
-        "widgetItems": [{
-          "type": "RT_KPI",
-          "id": 69,
-          "title": "gddg",
-          "metrics": ["MmcSessions"],
-          "visualization": "BAR",
-          "cumulative": true,
-          "last24Hours": true,
-          "projected": true
-        }]
-      }, {
-        "id": 62,
-        "widgetItems": [{
-          "type": "RT_KPI",
-          "id": 67,
-          "title": "fdsfs",
-          "metrics": ["AvgItemsInShoppingCart"],
-          "visualization": "LINE",
-          "cumulative": false,
-          "last24Hours": false,
-          "projected": false
-        }]
-      }, {
-        "id": 65,
-        "widgetItems": [{
-          "type": "RT_KPI",
-          "id": 70,
-          "title": "TotalConversionPoints",
-          "metrics": ["TotalConversionPoints"],
-          "visualization": "BAR",
-          "cumulative": false,
-          "last24Hours": false,
-          "projected": false
-        }]
-      }, {
-        "id": 66,
-        "widgetItems": [{
-          "type": "RT_CONVERSION_FUNNEL",
-          "id": 71,
-          "title": "Conversion Funnel by Marketing Channel",
-          "metrics": ["funnelMMC", "funnelNatural", "funnelReferral", "funnelDirect"]
-        }]
-      }, {
-        "id": 54,
-        "widgetItems": [{
-          "type": "RT_KPI",
-          "id": 56,
-          "title": "MMC Sessions",
-          "metrics": ["MmcSessions"],
-          "visualization": "BAR",
-          "cumulative": false,
-          "last24Hours": false,
-          "projected": false
-        }]
-      }, {
-        "id": 55,
-        "widgetItems": [{
-          "type": "RT_KPI",
-          "id": 57,
-          "title": "TotalOnePageSessions",
-          "metrics": ["TotalOnePageSessions"],
-          "visualization": "BAR",
-          "cumulative": false,
-          "last24Hours": true,
-          "projected": true
-        }]
-      }, {
-        "id": 84,
-        "widgetItems": [{
-          "type": "RT_KPI",
-          "id": 99,
-          "title": null,
-          "metrics": ["AvgItemsInShoppingCart", "AverageSessionLength"],
-          "visualization": "NUMBER",
-          "cumulative": false,
-          "last24Hours": false,
-          "projected": false
-        }]
-      }]
+      "subClients": [
+        30000009,
+        30004001,
+        30000001
+      ],
+      "widgets": [
+        {
+          "id": 121,
+          "widgetItems": [
+            {
+              "type": "ED_REPORT",
+              "id": 146,
+              "title": "ED test report",
+              "reportType": "ED_CHANNELS_SUMMARY",
+              "metrics": [],
+              "attributionMetrics": [
+                {
+                  "metricId": "TotalSessions",
+                  "attributionModels": [
+                    {
+                      "id": 108
+                    },
+                    {
+                      "id": 173
+                    },
+                    {
+                      "id": 174
+                    }
+                  ]
+                },{
+                  "metricId": "BounceRate",
+                  "attributionModels": [
+                    {
+                      "id": 175
+                    },
+                    {
+                      "id": 176
+                    }
+                  ]
+                },
+                {
+                  "metricId": "PageViewsPerSession"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
   }
 };
