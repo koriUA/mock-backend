@@ -56,6 +56,165 @@ app.use((req, res, next) => {
   next();
 });
 
+app.post("/api/funnel/multisite", (req, res, next) => {
+  return res.status(200).send({
+    data: {
+      "30000001": {
+        steps: [
+          {
+            name: "TotalSessions",
+            value: 1944,
+          },
+          {
+            name: "TotalBrowsSes",
+            value: 503,
+          },
+          {
+            name: "TotalShopSes",
+            value: 353,
+          },
+          {
+            name: "TotalBuySes",
+            value: 252,
+          },
+        ],
+        channels: [
+          {
+            name: "TotalDirectLoadSessions",
+            value: 1544,
+          },
+          {
+            name: "MmcSessions",
+            value: 250,
+          },
+          {
+            name: "TotalNaturalSearchSessions",
+            value: 0,
+          },
+          {
+            name: "TotalReferralSessions",
+            value: 150,
+          },
+        ],
+      },
+      "30004001": {
+        steps: [
+          {
+            name: "TotalSessions",
+            value: 1895,
+          },
+          {
+            name: "TotalBrowsSes",
+            value: 505,
+          },
+          {
+            name: "TotalShopSes",
+            value: 355,
+          },
+          {
+            name: "TotalBuySes",
+            value: 255,
+          },
+        ],
+        channels: [
+          {
+            name: "TotalDirectLoadSessions",
+            value: 1495,
+          },
+          {
+            name: "MmcSessions",
+            value: 250,
+          },
+          {
+            name: "TotalNaturalSearchSessions",
+            value: 0,
+          },
+          {
+            name: "TotalReferralSessions",
+            value: 150,
+          },
+        ],
+      },
+      TOTAL_SELECTED: {
+        steps: [
+          {
+            name: "TotalSessions",
+            value: 3839,
+          },
+          {
+            name: "TotalBrowsSes",
+            value: 1008,
+          },
+          {
+            name: "TotalShopSes",
+            value: 708,
+          },
+          {
+            name: "TotalBuySes",
+            value: 507,
+          },
+        ],
+        channels: [
+          {
+            name: "TotalDirectLoadSessions",
+            value: 3039,
+          },
+          {
+            name: "MmcSessions",
+            value: 500,
+          },
+          {
+            name: "TotalNaturalSearchSessions",
+            value: 0,
+          },
+          {
+            name: "TotalReferralSessions",
+            value: 300,
+          },
+        ],
+      },
+      TOTAL_MASTER: {
+        steps: [
+          {
+            name: "TotalSessions",
+            value: 3839,
+          },
+          {
+            name: "TotalBrowsSes",
+            value: 1008,
+          },
+          {
+            name: "TotalShopSes",
+            value: 708,
+          },
+          {
+            name: "TotalBuySes",
+            value: 507,
+          },
+        ],
+        channels: [
+          {
+            name: "TotalDirectLoadSessions",
+            value: 3039,
+          },
+          {
+            name: "MmcSessions",
+            value: 500,
+          },
+          {
+            name: "TotalNaturalSearchSessions",
+            value: 0,
+          },
+          {
+            name: "TotalReferralSessions",
+            value: 300,
+          },
+        ],
+      },
+    },
+  });
+});
+
 app.post("/api/kpi/multisite", (req, res, next) => {
   console.log("handled");
   return res.status(200).send({
@@ -113,6 +272,14 @@ app.post("/api/kpi/multisite", (req, res, next) => {
           {
             time: 1587824780692,
             value: 2,
+          },
+          {
+            time: 1588025780692,
+            value: 5,
+          },
+          {
+            time: 1589026780692,
+            value: 3,
           },
         ],
         comparisonData: [
@@ -400,7 +567,71 @@ app.get("/api/recent-items", (req, res, next) => {
   });
 });
 */
+/*
+app.post("/api/reports/ed", (req, res, next) => {
+  res.send({
+    columnsOrder: [
+      "ConversionEventCategoryId",
+      "ConversionEventId",
+      "TotalConversionPoints",
+      "TotalConversionsInitiated",
+      "TotalConversionsCompleted",
+    ],
+    data: [
+      {
+        TotalConversionPoints: 13900.0,
+        ConversionEventId: "set email alerts",
+        TotalConversionsCompleted: 24.0,
+        TotalConversionsInitiated: 24.0,
+        ConversionEventCategoryId: "category9",
+      },
+      {
+        TotalConversionPoints: 12800.0,
+        ConversionEventId: "sign up for webinar",
+        TotalConversionsCompleted: 23.0,
+        TotalConversionsInitiated: 23.0,
+        ConversionEventCategoryId: "category1",
+      },
+      {
+        TotalConversionPoints: 12100.0,
+        ConversionEventId: "special registration",
+        TotalConversionsCompleted: 21.0,
+        TotalConversionsInitiated: 21.0,
+        ConversionEventCategoryId: "category9",
+      },
+      {
+        TotalConversionPoints: 10900.0,
+        ConversionEventId: "newsletter signup",
+        TotalConversionsCompleted: 20.0,
+        TotalConversionsInitiated: 20.0,
+        ConversionEventCategoryId: "category6",
+      },
+      {
+        TotalConversionPoints: 10900.0,
+        ConversionEventId: "set email alerts",
+        TotalConversionsCompleted: 20.0,
+        TotalConversionsInitiated: 20.0,
+        ConversionEventCategoryId: "category4",
+      },
+    ],
+  });
+});
+*/
 
+app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
+  res.send(
+    {"metrics":{"ED_TOPLINE_SUMMARY":[{"metricId":"NumberOfAbandonedShoppingCarts","preSelected":false},{"metricId":"AvgItemsInShoppingCart","preSelected":false},{"metricId":"AverageNewSessionLength","preSelected":false},{"metricId":"AverageOrderValue","preSelected":true},{"metricId":"AverageRepeatSessionLength","preSelected":false},{"metricId":"AverageSessionLength","preSelected":false},{"metricId":"ShippingPerOrder","preSelected":false},{"metricId":"AverageTimePerPage","preSelected":false},{"metricId":"BounceRate","preSelected":true},{"metricId":"BuyingSessionsCompleted","preSelected":true},{"metricId":"TotalConversionPoints","preSelected":false},{"metricId":"EventsPointsPerSession","preSelected":false},{"metricId":"EventsPerSession","preSelected":false},{"metricId":"TotalConversionsCompleted","preSelected":false},{"metricId":"ItemAbandonmentRate","preSelected":false},{"metricId":"TotalItemsInShoppingCart","preSelected":false},{"metricId":"TotalItemsOrdered","preSelected":false},{"metricId":"TotalOnSiteSearch","preSelected":true},{"metricId":"TotalOrders","preSelected":false},{"metricId":"OrdersPerSession","preSelected":false},{"metricId":"TotalPageViews","preSelected":false},{"metricId":"PageViewsPerSession","preSelected":false},{"metricId":"TotalProductViews","preSelected":false},{"metricId":"TotalSales","preSelected":true},{"metricId":"TotalSessions","preSelected":true},{"metricId":"TotalShipping","preSelected":false},{"metricId":"ShoppingCartAbandonmentRate","preSelected":false},{"metricId":"TotalTrackedItemsOrdered","preSelected":false},{"metricId":"TotalTrackedOrders","preSelected":false},{"metricId":"TotalTrackedPageViews","preSelected":false},{"metricId":"TotalTrackedProductViews","preSelected":false},{"metricId":"TotalTrackedSales","preSelected":false},{"metricId":"TotalTrackedShipping","preSelected":false},{"metricId":"TotalBuyers","preSelected":false},{"metricId":"TotalVisitors","preSelected":false}],"ED_CHANNELS_SUMMARY":[{"metricId":"TotalSales","attribution":true,"preSelected":true},{"metricId":"TotalShipping","attribution":true,"preSelected":false},{"metricId":"AverageShipping","attribution":true,"preSelected":false},{"metricId":"TotalSessions","attribution":true,"preSelected":true},{"metricId":"BuyingSessionsCompleted","attribution":true,"preSelected":true},{"metricId":"TotalOrders","attribution":true,"preSelected":false},{"metricId":"AverageOrderValue","attribution":true,"preSelected":true},{"metricId":"AverageSessionLength","attribution":true,"preSelected":false},{"metricId":"TotalPageViews","attribution":true,"preSelected":false},{"metricId":"PageViewsPerSession","attribution":false,"preSelected":false},{"metricId":"TotalOnePageSessions","attribution":true,"preSelected":false},{"metricId":"BounceRate","attribution":true,"preSelected":true},{"metricId":"Events","attribution":true,"preSelected":false},{"metricId":"EventSessions","attribution":true,"preSelected":false},{"metricId":"TotalConversionPoints","attribution":true,"preSelected":false},{"metricId":"EventsPointsPerSession","attribution":false,"preSelected":false},{"metricId":"TargetSales","attribution":true,"preSelected":false},{"metricId":"TotalBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyerSales","attribution":true,"preSelected":false},{"metricId":"TotalVisitors","attribution":true,"preSelected":false},{"metricId":"NewVisitors","attribution":true,"preSelected":false}]},"attributions":[
+        { id: 108, direction: "BACKWARD", duration: -1, method: "LAST_CLICK" },
+        { id: 109, direction: "BACKWARD", duration: 1, method: "LAST_CLICK" },
+        { id: 130, direction: "FORWARD", duration: 11, method: "AVERAGE_CLICK" },
+        { id: 134, direction: "BACKWARD", duration: 16, method: "LAST_CLICK" },
+        { id: 173, direction: "BACKWARD", duration: 9, method: "FIRST_CLICK" },
+        { id: 174, direction: "BACKWARD", duration: 12, method: "FIRST_CLICK" },
+        { id: 175, direction: "FORWARD", duration: 13, method: "FIRST_CLICK" },
+        { id: 176, direction: "FORWARD", duration: 7, method: "LAST_CLICK" },
+      ]}
+  )
+});
 
 
 const defaultRoute = (req, res, next) => {
