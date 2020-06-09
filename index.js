@@ -567,7 +567,7 @@ app.get("/api/recent-items", (req, res, next) => {
   });
 });
 */
-
+/*
 app.post("/api/reports/ed", (req, res, next) => {
   res.send({
     columnsOrder: [
@@ -616,84 +616,23 @@ app.post("/api/reports/ed", (req, res, next) => {
     ],
   });
 });
+*/
 
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
-  res.send({
-    metrics: {
-      ED_TOPLINE_SUMMARY: [
-        { metricId: "NumberOfAbandonedShoppingCarts" },
-        { metricId: "AvgItemsInShoppingCart" },
-        { metricId: "AverageNewSessionLength" },
-        { metricId: "AverageOrderValue" },
-        { metricId: "AverageRepeatSessionLength" },
-        { metricId: "AverageSessionLength" },
-        { metricId: "ShippingPerOrder" },
-        { metricId: "AverageTimePerPage" },
-        { metricId: "BounceRate" },
-        { metricId: "BuyingSessionsCompleted" },
-        { metricId: "TotalConversionPoints" },
-        { metricId: "EventsPointsPerSession" },
-        { metricId: "EventsPerSession" },
-        { metricId: "TotalConversionsCompleted" },
-        { metricId: "ItemAbandonmentRate" },
-        { metricId: "TotalItemsInShoppingCart" },
-        { metricId: "TotalItemsOrdered" },
-        { metricId: "TotalOnSiteSearch" },
-        { metricId: "TotalOrders" },
-        { metricId: "OrdersPerSession" },
-        { metricId: "TotalPageViews" },
-        { metricId: "PageViewsPerSession" },
-        { metricId: "TotalProductViews" },
-        { metricId: "TotalSales" },
-        { metricId: "TotalSessions" },
-        { metricId: "TotalShipping" },
-        { metricId: "ShoppingCartAbandonmentRate" },
-        { metricId: "TotalTrackedItemsOrdered" },
-        { metricId: "TotalTrackedOrders" },
-        { metricId: "TotalTrackedPageViews" },
-        { metricId: "TotalTrackedProductViews" },
-        { metricId: "TotalTrackedSales" },
-        { metricId: "TotalTrackedShipping" },
-        { metricId: "TotalBuyers" },
-        { metricId: "TotalVisitors" },
-      ],
-      ED_CHANNELS_SUMMARY: [
-        { metricId: "TotalSales", attribution: true },
-        { metricId: "TotalShipping", attribution: true },
-        { metricId: "AverageShipping", attribution: true },
-        { metricId: "TotalSessions", attribution: true },
-        { metricId: "BuyingSessionsCompleted", attribution: true },
-        { metricId: "TotalOrders", attribution: true },
-        { metricId: "AverageOrderValue", attribution: true },
-        { metricId: "AverageSessionLength", attribution: true },
-        { metricId: "TotalPageViews", attribution: true },
-        { metricId: "PageViewsPerSession", attribution: false },
-        { metricId: "TotalOnePageSessions", attribution: true },
-        { metricId: "BounceRate", attribution: true },
-        { metricId: "Events", attribution: true },
-        { metricId: "EventSessions", attribution: true },
-        { metricId: "TotalConversionPoints", attribution: true },
-        { metricId: "EventsPointsPerSession", attribution: false },
-        { metricId: "TargetSales", attribution: true },
-        { metricId: "TotalBuyers", attribution: true },
-        { metricId: "NewBuyers", attribution: true },
-        { metricId: "NewBuyerSales", attribution: true },
-        { metricId: "TotalVisitors", attribution: true },
-        { metricId: "NewVisitors", attribution: true },
-      ],
-    },
-    attributions: [
-      { id: 108, direction: "BACKWARD", duration: -1, method: "LAST_CLICK" },
-      { id: 109, direction: "BACKWARD", duration: 1, method: "LAST_CLICK" },
-      { id: 130, direction: "FORWARD", duration: 11, method: "AVERAGE_CLICK" },
-      { id: 134, direction: "BACKWARD", duration: 16, method: "LAST_CLICK" },
-      { id: 173, direction: "BACKWARD", duration: 9, method: "FIRST_CLICK" },
-      { id: 174, direction: "BACKWARD", duration: 12, method: "FIRST_CLICK" },
-      { id: 175, direction: "FORWARD", duration: 13, method: "FIRST_CLICK" },
-      { id: 176, direction: "FORWARD", duration: 7, method: "LAST_CLICK" },
-    ],
-  });
+  res.send(
+    {"metrics":{"ED_TOPLINE_SUMMARY":[{"metricId":"NumberOfAbandonedShoppingCarts","preSelected":false},{"metricId":"AvgItemsInShoppingCart","preSelected":false},{"metricId":"AverageNewSessionLength","preSelected":false},{"metricId":"AverageOrderValue","preSelected":true},{"metricId":"AverageRepeatSessionLength","preSelected":false},{"metricId":"AverageSessionLength","preSelected":false},{"metricId":"ShippingPerOrder","preSelected":false},{"metricId":"AverageTimePerPage","preSelected":false},{"metricId":"BounceRate","preSelected":true},{"metricId":"BuyingSessionsCompleted","preSelected":true},{"metricId":"TotalConversionPoints","preSelected":false},{"metricId":"EventsPointsPerSession","preSelected":false},{"metricId":"EventsPerSession","preSelected":false},{"metricId":"TotalConversionsCompleted","preSelected":false},{"metricId":"ItemAbandonmentRate","preSelected":false},{"metricId":"TotalItemsInShoppingCart","preSelected":false},{"metricId":"TotalItemsOrdered","preSelected":false},{"metricId":"TotalOnSiteSearch","preSelected":true},{"metricId":"TotalOrders","preSelected":false},{"metricId":"OrdersPerSession","preSelected":false},{"metricId":"TotalPageViews","preSelected":false},{"metricId":"PageViewsPerSession","preSelected":false},{"metricId":"TotalProductViews","preSelected":false},{"metricId":"TotalSales","preSelected":true},{"metricId":"TotalSessions","preSelected":true},{"metricId":"TotalShipping","preSelected":false},{"metricId":"ShoppingCartAbandonmentRate","preSelected":false},{"metricId":"TotalTrackedItemsOrdered","preSelected":false},{"metricId":"TotalTrackedOrders","preSelected":false},{"metricId":"TotalTrackedPageViews","preSelected":false},{"metricId":"TotalTrackedProductViews","preSelected":false},{"metricId":"TotalTrackedSales","preSelected":false},{"metricId":"TotalTrackedShipping","preSelected":false},{"metricId":"TotalBuyers","preSelected":false},{"metricId":"TotalVisitors","preSelected":false}],"ED_CHANNELS_SUMMARY":[{"metricId":"TotalSales","attribution":true,"preSelected":true},{"metricId":"TotalShipping","attribution":true,"preSelected":false},{"metricId":"AverageShipping","attribution":true,"preSelected":false},{"metricId":"TotalSessions","attribution":true,"preSelected":true},{"metricId":"BuyingSessionsCompleted","attribution":true,"preSelected":true},{"metricId":"TotalOrders","attribution":true,"preSelected":false},{"metricId":"AverageOrderValue","attribution":true,"preSelected":true},{"metricId":"AverageSessionLength","attribution":true,"preSelected":false},{"metricId":"TotalPageViews","attribution":true,"preSelected":false},{"metricId":"PageViewsPerSession","attribution":false,"preSelected":false},{"metricId":"TotalOnePageSessions","attribution":true,"preSelected":false},{"metricId":"BounceRate","attribution":true,"preSelected":true},{"metricId":"Events","attribution":true,"preSelected":false},{"metricId":"EventSessions","attribution":true,"preSelected":false},{"metricId":"TotalConversionPoints","attribution":true,"preSelected":false},{"metricId":"EventsPointsPerSession","attribution":false,"preSelected":false},{"metricId":"TargetSales","attribution":true,"preSelected":false},{"metricId":"TotalBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyerSales","attribution":true,"preSelected":false},{"metricId":"TotalVisitors","attribution":true,"preSelected":false},{"metricId":"NewVisitors","attribution":true,"preSelected":false}]},"attributions":[
+        { id: 108, direction: "BACKWARD", duration: -1, method: "LAST_CLICK" },
+        { id: 109, direction: "BACKWARD", duration: 1, method: "LAST_CLICK" },
+        { id: 130, direction: "FORWARD", duration: 11, method: "AVERAGE_CLICK" },
+        { id: 134, direction: "BACKWARD", duration: 16, method: "LAST_CLICK" },
+        { id: 173, direction: "BACKWARD", duration: 9, method: "FIRST_CLICK" },
+        { id: 174, direction: "BACKWARD", duration: 12, method: "FIRST_CLICK" },
+        { id: 175, direction: "FORWARD", duration: 13, method: "FIRST_CLICK" },
+        { id: 176, direction: "FORWARD", duration: 7, method: "LAST_CLICK" },
+      ]}
+  )
 });
+
 
 const defaultRoute = (req, res, next) => {
   //const newUrl = "http://aus08-rtweb01.cm.emm.local:8080";
