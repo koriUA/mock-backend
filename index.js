@@ -56,268 +56,268 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/api/funnel/multisite", (req, res, next) => {
-  return res.status(200).send({
-    data: {
-      "30000001": {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 1944,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 503,
-          },
-          {
-            name: "TotalShopSes",
-            value: 353,
-          },
-          {
-            name: "TotalBuySes",
-            value: 252,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 1544,
-          },
-          {
-            name: "MmcSessions",
-            value: 250,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 150,
-          },
-        ],
-      },
-      "30004001": {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 1895,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 505,
-          },
-          {
-            name: "TotalShopSes",
-            value: 355,
-          },
-          {
-            name: "TotalBuySes",
-            value: 255,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 1495,
-          },
-          {
-            name: "MmcSessions",
-            value: 250,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 150,
-          },
-        ],
-      },
-      TOTAL_SELECTED: {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 3839,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 1008,
-          },
-          {
-            name: "TotalShopSes",
-            value: 708,
-          },
-          {
-            name: "TotalBuySes",
-            value: 507,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 3039,
-          },
-          {
-            name: "MmcSessions",
-            value: 500,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 300,
-          },
-        ],
-      },
-      TOTAL_MASTER: {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 3839,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 1008,
-          },
-          {
-            name: "TotalShopSes",
-            value: 708,
-          },
-          {
-            name: "TotalBuySes",
-            value: 507,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 3039,
-          },
-          {
-            name: "MmcSessions",
-            value: 500,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 300,
-          },
-        ],
-      },
-    },
-  });
-});
+// app.post("/api/funnel/multisite", (req, res, next) => {
+//   return res.status(200).send({
+//     data: {
+//       "30000001": {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 1944,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 503,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 353,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 252,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 1544,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 250,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 150,
+//           },
+//         ],
+//       },
+//       "30004001": {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 1895,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 505,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 355,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 255,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 1495,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 250,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 150,
+//           },
+//         ],
+//       },
+//       TOTAL_SELECTED: {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 3839,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 1008,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 708,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 507,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 3039,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 500,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 300,
+//           },
+//         ],
+//       },
+//       TOTAL_MASTER: {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 3839,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 1008,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 708,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 507,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 3039,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 500,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 300,
+//           },
+//         ],
+//       },
+//     },
+//   });
+// });
 
-app.post("/api/kpi/multisite", (req, res, next) => {
-  console.log("handled");
-  return res.status(200).send({
-    data: {
-      "30000001": {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587824780692,
-            value: 2,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-      "30004001": {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587824780692,
-            value: 2,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-      TOTAL_MASTER: {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587924780692,
-            value: 2,
-          },
-          {
-            time: 1588025780692,
-            value: 5,
-          },
-          {
-            time: 1589026780692,
-            value: 3,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-      TOTAL_SELECTED: {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587824780692,
-            value: 2,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-    },
-  });
-});
+// app.post("/api/kpi/multisite", (req, res, next) => {
+//   console.log("handled");
+//   return res.status(200).send({
+//     data: {
+//       "30000001": {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587824780692,
+//             value: 2,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//       "30004001": {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587824780692,
+//             value: 2,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//       TOTAL_MASTER: {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587924780692,
+//             value: 2,
+//           },
+//           {
+//             time: 1588025780692,
+//             value: 5,
+//           },
+//           {
+//             time: 1589026780692,
+//             value: 3,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//       TOTAL_SELECTED: {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587824780692,
+//             value: 2,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//     },
+//   });
+// });
 /*
 app.post("/api/report-data", (req, res, next) => {
   res.send({
