@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 
   next();
 });
-
+/*
 app.post("/api/funnel/multisite", (req, res, next) => {
   return res.status(200).send({
     data: {
@@ -318,6 +318,7 @@ app.post("/api/kpi/multisite", (req, res, next) => {
     },
   });
 });
+*/
 /*
 app.post("/api/report-data", (req, res, next) => {
   res.send({
@@ -618,6 +619,7 @@ app.post("/api/reports/ed", (req, res, next) => {
 });
 */
 
+
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
   res.send(
     {"metrics":{"ED_TOPLINE_SUMMARY":[{"metricId":"NumberOfAbandonedShoppingCarts","preSelected":false},{"metricId":"AvgItemsInShoppingCart","preSelected":false},{"metricId":"AverageNewSessionLength","preSelected":false},{"metricId":"AverageOrderValue","preSelected":true},{"metricId":"AverageRepeatSessionLength","preSelected":false},{"metricId":"AverageSessionLength","preSelected":false},{"metricId":"ShippingPerOrder","preSelected":false},{"metricId":"AverageTimePerPage","preSelected":false},{"metricId":"BounceRate","preSelected":true},{"metricId":"BuyingSessionsCompleted","preSelected":true},{"metricId":"TotalConversionPoints","preSelected":false},{"metricId":"EventsPointsPerSession","preSelected":false},{"metricId":"EventsPerSession","preSelected":false},{"metricId":"TotalConversionsCompleted","preSelected":false},{"metricId":"ItemAbandonmentRate","preSelected":false},{"metricId":"TotalItemsInShoppingCart","preSelected":false},{"metricId":"TotalItemsOrdered","preSelected":false},{"metricId":"TotalOnSiteSearch","preSelected":true},{"metricId":"TotalOrders","preSelected":false},{"metricId":"OrdersPerSession","preSelected":false},{"metricId":"TotalPageViews","preSelected":false},{"metricId":"PageViewsPerSession","preSelected":false},{"metricId":"TotalProductViews","preSelected":false},{"metricId":"TotalSales","preSelected":true},{"metricId":"TotalSessions","preSelected":true},{"metricId":"TotalShipping","preSelected":false},{"metricId":"ShoppingCartAbandonmentRate","preSelected":false},{"metricId":"TotalTrackedItemsOrdered","preSelected":false},{"metricId":"TotalTrackedOrders","preSelected":false},{"metricId":"TotalTrackedPageViews","preSelected":false},{"metricId":"TotalTrackedProductViews","preSelected":false},{"metricId":"TotalTrackedSales","preSelected":false},{"metricId":"TotalTrackedShipping","preSelected":false},{"metricId":"TotalBuyers","preSelected":false},{"metricId":"TotalVisitors","preSelected":false}],"ED_CHANNELS_SUMMARY":[{"metricId":"TotalSales","attribution":true,"preSelected":true},{"metricId":"TotalShipping","attribution":true,"preSelected":false},{"metricId":"AverageShipping","attribution":true,"preSelected":false},{"metricId":"TotalSessions","attribution":true,"preSelected":true},{"metricId":"BuyingSessionsCompleted","attribution":true,"preSelected":true},{"metricId":"TotalOrders","attribution":true,"preSelected":false},{"metricId":"AverageOrderValue","attribution":true,"preSelected":true},{"metricId":"AverageSessionLength","attribution":true,"preSelected":false},{"metricId":"TotalPageViews","attribution":true,"preSelected":false},{"metricId":"PageViewsPerSession","attribution":false,"preSelected":false},{"metricId":"TotalOnePageSessions","attribution":true,"preSelected":false},{"metricId":"BounceRate","attribution":true,"preSelected":true},{"metricId":"Events","attribution":true,"preSelected":false},{"metricId":"EventSessions","attribution":true,"preSelected":false},{"metricId":"TotalConversionPoints","attribution":true,"preSelected":false},{"metricId":"EventsPointsPerSession","attribution":false,"preSelected":false},{"metricId":"TargetSales","attribution":true,"preSelected":false},{"metricId":"TotalBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyerSales","attribution":true,"preSelected":false},{"metricId":"TotalVisitors","attribution":true,"preSelected":false},{"metricId":"NewVisitors","attribution":true,"preSelected":false}]},"attributions":[
@@ -632,6 +634,16 @@ app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
       ]}
   )
 });
+
+/*
+app.post("/api/reports/multisite/channel-summary", (req, res, next) => {
+  console.log('------------------------------');
+  res.send(
+    {"singleAttributionMetrics":[{"metricId":"TotalSales","attributionModelId":108},{"metricId":"TotalSessions","attributionModelId":108},{"metricId":"BuyingSessionsCompleted","attributionModelId":108},{"metricId":"AverageOrderValue","attributionModelId":108},{"metricId":"BounceRate","attributionModelId":108}],"values":{"All Other MMC Vendors":{"30000001":[324,55,885,32,8],"30004001":[55222,55,84585,32,4448],"TOTAL_SELECTED":[66,442,null,null,445],"30000003":[null,null,null,null,null],"TOTAL_MASTER":[null,null,null,null,null]},"Direct Load Activity":{"30000001":[null,null,null,null,null],"30004001":[null,null,null,null,null],"TOTAL_SELECTED":[null,null,null,null,null],"30000003":[null,null,null,null,null],"TOTAL_MASTER":[null,null,null,null,null]},"Referring Sites Activity":{"30000001":[null,null,null,null,null],"30004001":[null,null,null,null,null],"TOTAL_SELECTED":[null,null,null,null,null],"30000003":[null,null,null,null,null],"TOTAL_MASTER":[null,null,null,null,null]},"Natural Search Activity":{"30000001":[null,null,null,null,null],"30004001":[null,null,null,null,null],"TOTAL_SELECTED":[null,null,null,null,null],"30000003":[null,null,null,null,null],"TOTAL_MASTER":[null,null,null,null,null]}}}
+  )
+});
+*/
+
 
 
 const defaultRoute = (req, res, next) => {
