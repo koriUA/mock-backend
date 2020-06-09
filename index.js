@@ -6,6 +6,8 @@ const request = require("request");
 const cors = require("cors");
 const ReportOptions = require("./report-options-data");
 const ReportData = require("./reports-data");
+const axios = require('axios');
+const _ = require('lodash');
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -55,270 +57,269 @@ app.use((req, res, next) => {
 
   next();
 });
-/*
-app.post("/api/funnel/multisite", (req, res, next) => {
-  return res.status(200).send({
-    data: {
-      "30000001": {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 1944,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 503,
-          },
-          {
-            name: "TotalShopSes",
-            value: 353,
-          },
-          {
-            name: "TotalBuySes",
-            value: 252,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 1544,
-          },
-          {
-            name: "MmcSessions",
-            value: 250,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 150,
-          },
-        ],
-      },
-      "30004001": {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 1895,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 505,
-          },
-          {
-            name: "TotalShopSes",
-            value: 355,
-          },
-          {
-            name: "TotalBuySes",
-            value: 255,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 1495,
-          },
-          {
-            name: "MmcSessions",
-            value: 250,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 150,
-          },
-        ],
-      },
-      TOTAL_SELECTED: {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 3839,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 1008,
-          },
-          {
-            name: "TotalShopSes",
-            value: 708,
-          },
-          {
-            name: "TotalBuySes",
-            value: 507,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 3039,
-          },
-          {
-            name: "MmcSessions",
-            value: 500,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 300,
-          },
-        ],
-      },
-      TOTAL_MASTER: {
-        steps: [
-          {
-            name: "TotalSessions",
-            value: 3839,
-          },
-          {
-            name: "TotalBrowsSes",
-            value: 1008,
-          },
-          {
-            name: "TotalShopSes",
-            value: 708,
-          },
-          {
-            name: "TotalBuySes",
-            value: 507,
-          },
-        ],
-        channels: [
-          {
-            name: "TotalDirectLoadSessions",
-            value: 3039,
-          },
-          {
-            name: "MmcSessions",
-            value: 500,
-          },
-          {
-            name: "TotalNaturalSearchSessions",
-            value: 0,
-          },
-          {
-            name: "TotalReferralSessions",
-            value: 300,
-          },
-        ],
-      },
-    },
-  });
-});
 
-app.post("/api/kpi/multisite", (req, res, next) => {
-  console.log("handled");
-  return res.status(200).send({
-    data: {
-      "30000001": {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587824780692,
-            value: 2,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-      "30004001": {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587824780692,
-            value: 2,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-      TOTAL_MASTER: {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587824780692,
-            value: 2,
-          },
-          {
-            time: 1588025780692,
-            value: 5,
-          },
-          {
-            time: 1589026780692,
-            value: 3,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-      TOTAL_SELECTED: {
-        data: [
-          {
-            time: 1587738380692,
-            value: 1,
-          },
-          {
-            time: 1587824780692,
-            value: 2,
-          },
-        ],
-        comparisonData: [
-          {
-            time: 1587133630211,
-            value: 3,
-          },
-          {
-            time: 1587220030211,
-            value: 4,
-          },
-        ],
-      },
-    },
-  });
-});
-*/
+// app.post("/api/funnel/multisite", (req, res, next) => {
+//   return res.status(200).send({
+//     data: {
+//       "30000001": {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 1944,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 503,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 353,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 252,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 1544,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 250,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 150,
+//           },
+//         ],
+//       },
+//       "30004001": {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 1895,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 505,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 355,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 255,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 1495,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 250,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 150,
+//           },
+//         ],
+//       },
+//       TOTAL_SELECTED: {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 3839,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 1008,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 708,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 507,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 3039,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 500,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 300,
+//           },
+//         ],
+//       },
+//       TOTAL_MASTER: {
+//         steps: [
+//           {
+//             name: "TotalSessions",
+//             value: 3839,
+//           },
+//           {
+//             name: "TotalBrowsSes",
+//             value: 1008,
+//           },
+//           {
+//             name: "TotalShopSes",
+//             value: 708,
+//           },
+//           {
+//             name: "TotalBuySes",
+//             value: 507,
+//           },
+//         ],
+//         channels: [
+//           {
+//             name: "TotalDirectLoadSessions",
+//             value: 3039,
+//           },
+//           {
+//             name: "MmcSessions",
+//             value: 500,
+//           },
+//           {
+//             name: "TotalNaturalSearchSessions",
+//             value: 0,
+//           },
+//           {
+//             name: "TotalReferralSessions",
+//             value: 300,
+//           },
+//         ],
+//       },
+//     },
+//   });
+// });
+
+// app.post("/api/kpi/multisite", (req, res, next) => {
+//   console.log("handled");
+//   return res.status(200).send({
+//     data: {
+//       "30000001": {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587824780692,
+//             value: 2,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//       "30004001": {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587824780692,
+//             value: 2,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//       TOTAL_MASTER: {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587924780692,
+//             value: 2,
+//           },
+//           {
+//             time: 1588025780692,
+//             value: 5,
+//           },
+//           {
+//             time: 1589026780692,
+//             value: 3,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//       TOTAL_SELECTED: {
+//         data: [
+//           {
+//             time: 1587738380692,
+//             value: 1,
+//           },
+//           {
+//             time: 1587824780692,
+//             value: 2,
+//           },
+//         ],
+//         comparisonData: [
+//           {
+//             time: 1587133630211,
+//             value: 3,
+//           },
+//           {
+//             time: 1587220030211,
+//             value: 4,
+//           },
+//         ],
+//       },
+//     },
+//   });
+// });
 /*
 app.post("/api/report-data", (req, res, next) => {
   res.send({
@@ -619,6 +620,36 @@ app.post("/api/reports/ed", (req, res, next) => {
 });
 */
 
+app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
+  console.log('invoked tree config request');
+
+  try {
+    const dashboards = await axios.get('http://10.239.169.188:8080/api/dashboards', {
+      headers: req.headers
+    }).then((response) => response.data);
+    const applications = ['REALTIME_DASHBOARD', 'ENTERPRISE_DASHBOARD'];
+    const categories = ['MyDashboards', 'Standard'];
+
+    const result = applications.map(application => ({
+      type: application,
+      categories: categories.map(category => ({
+        id: category,
+        name: category,
+        dashboards: dashboards.filter(({dashboardType, id}) =>{
+          const isApp = dashboardType === application;
+          const isCategory = category === 'Standard' ? id % 2 === 0 : id % 2 !== 0;
+          return isApp && isCategory;
+        }).map(({id, title}) => ({id, name: title}))
+      }))
+    }));
+
+    res.status(200).json({applications: result});
+  } catch (e) {
+    console.error(e);
+    res.status(500).send(e);
+  }
+
+});
 
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
   res.send(

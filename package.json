@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/koriUA/mock-backend#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "date-fns": "^2.11.1",
     "express": "^4.17.1",
     "http-proxy": "^1.18.0",
+    "lodash": "^4.17.15",
     "request": "^2.88.2"
   }
 }
