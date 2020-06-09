@@ -628,7 +628,11 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
       headers: req.headers
     }).then((response) => response.data);
     const applications = ['REALTIME_DASHBOARD', 'ENTERPRISE_DASHBOARD'];
-    const categories = ['MyDashboards', 'Standard'];
+    const categories = ["STANDARD",
+      "SHARED",
+      "PERSONAL",
+      "PUBLIC",
+      "ADMIN"];
   
     const result = applications.map(application => ({
       type: application,
@@ -637,7 +641,7 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
         name: category,
         dashboards: dashboards.filter(({dashboardType, id}) =>{
           const isApp = dashboardType === application;
-          const isCategory = category === 'Standard' ? id % 2 === 0 : id % 2 !== 0;
+          const isCategory = category === 'STANDARD' ? id % 2 === 0 : id % 2 !== 0;
           return isApp && isCategory; 
         }).map(({id, title}) => ({id, name: title}))
       }))
