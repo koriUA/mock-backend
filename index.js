@@ -6,6 +6,8 @@ const request = require("request");
 const cors = require("cors");
 const ReportOptions = require("./report-options-data");
 const ReportData = require("./reports-data");
+const axios = require('axios');
+const _ = require('lodash');
 
 const bodyParser = require("body-parser");
 const app = express();
@@ -617,6 +619,37 @@ app.post("/api/reports/ed", (req, res, next) => {
   });
 });
 */
+
+app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
+  console.log('invoked tree config request');
+  
+  try {
+    const dashboards = await axios.get('http://10.239.169.188:8080/api/dashboards', {
+      headers: req.headers
+    }).then((response) => response.data);
+    const applications = ['REALTIME_DASHBOARD', 'ENTERPRISE_DASHBOARD'];
+    const categories = ['MyDashboards', 'Standard'];
+  
+    const result = applications.map(application => ({
+      type: application,
+      categories: categories.map(category => ({
+        id: category,
+        name: category,
+        dashboards: dashboards.filter(({dashboardType, id}) =>{
+          const isApp = dashboardType === application;
+          const isCategory = category === 'Standard' ? id % 2 === 0 : id % 2 !== 0;
+          return isApp && isCategory; 
+        }).map(({id, title}) => ({id, name: title}))
+      }))
+    }));
+  
+    res.status(200).json({applications: result});
+  } catch (e) {
+    console.error(e);
+    res.status(500).send(e);
+  }
+  
+});
 
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
   res.send(
