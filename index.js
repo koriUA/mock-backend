@@ -639,6 +639,7 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
       categories: categories.map(category => ({
         id: category,
         name: category,
+        type: category,
         dashboards: dashboards.filter(({dashboardType, id, title}) =>{
           const isApp = dashboardType === application;
           const isStandard = title.includes('STANDARD');
@@ -653,8 +654,10 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
             return true;
           }
           return false;
-        }).map(({id, title}) => ({id, name: title}))
-      }))
+        }).map(({id, title, type}) => ({id, name: title, type }))
+      })).filter((category) => {
+        return category.dashboards.length;
+      })
     }));
 
     res.status(200).json({applications: result});
