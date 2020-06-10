@@ -639,6 +639,7 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
       categories: categories.map(category => ({
         id: category,
         name: category,
+        type: category,
         dashboards: dashboards.filter(({dashboardType, id, title}) =>{
           const isApp = dashboardType === application;
           const isStandard = title.includes('STANDARD');
