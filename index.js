@@ -646,6 +646,7 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
           const isShared = title.includes('SHARED');
           const isPublic = title.includes('PUBLIC');
           const isAdmin = title.includes('ADMIN');
+          // TODO... SELF_CREATED;
           const isPersonal = !isStandard && !isShared && !isPublic && !isAdmin;
           if (title.includes(category) && isApp) {
             return true;
