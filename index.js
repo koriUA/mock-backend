@@ -646,6 +646,7 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
           const isShared = title.includes('SHARED');
           const isPublic = title.includes('PUBLIC');
           const isAdmin = title.includes('ADMIN');
+          // TODO... SELF_CREATED;
           const isPersonal = !isStandard && !isShared && !isPublic && !isAdmin;
           if (title.includes(category) && isApp) {
             return true;
@@ -654,8 +655,10 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
             return true;
           }
           return false;
-        }).map(({id, title}) => ({id, name: title}))
-      }))
+        }).map(({id, title, type}) => ({id, name: title, type }))
+      })).filter((category) => {
+        return category.dashboards.length;
+      })
     }));
 
     res.status(200).json({applications: result});
