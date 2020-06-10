@@ -639,10 +639,20 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
       categories: categories.map(category => ({
         id: category,
         name: category,
-        dashboards: dashboards.filter(({dashboardType, id}) =>{
+        dashboards: dashboards.filter(({dashboardType, id, title}) =>{
           const isApp = dashboardType === application;
-          const isCategory = category === 'STANDARD' ? id % 2 === 0 : id % 2 !== 0;
-          return isApp && isCategory; 
+          const isStandard = title.includes('STANDARD');
+          const isShared = title.includes('SHARED');
+          const isPublic = title.includes('PUBLIC');
+          const isAdmin = title.includes('ADMIN');
+          const isPersonal = !isStandard && !isShared && !isPublic && !isAdmin;
+          if (title.includes(category) && isApp) {
+            return true;
+          }
+          if (isApp && category === 'PERSONAL' && !isStandard && !isShared && !isPublic && !isAdmin) {
+            return true;
+          }
+          return false;
         }).map(({id, title}) => ({id, name: title}))
       }))
     }));
