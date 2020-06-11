@@ -693,6 +693,32 @@ app.post("/api/reports/multisite/channel-summary", (req, res, next) => {
 });
 */
 
+app.get("/api/config/view/dashboard/:dashboardId", (req, res, next) => {
+  res.send(
+    [
+      {
+        "id": 1,
+        "selected": true,
+        "dashboardId": 20,
+        "name": "view 001"
+      },
+      {
+        "id": 2,
+        "selected": false,
+        "dashboardId": 20,
+        "name": "view 002"
+      },
+      {
+        "id": 3,
+        "selected": true,
+        "dashboardId": 20,
+        "name": "view 003"
+      },
+    ]
+  )
+})
+
+
 
 
 const defaultRoute = (req, res, next) => {
