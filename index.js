@@ -627,7 +627,7 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
     const dashboards = await axios.get('http://10.239.169.188:8080/api/dashboards', {
       headers: req.headers
     }).then((response) => response.data);
-    const applications = ['REALTIME_DASHBOARD', 'ENTERPRISE_DASHBOARD'];
+    const applications = ['REALTIME_DASHBOARD', 'ENTERPRISE_DASHBOARD', 'NO_APPLICATION'];
     const categories = ["STANDARD",
       "SHARED",
       "PERSONAL",
@@ -635,11 +635,12 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
       "ADMIN"];
   
     const result = applications.map(application => ({
-      type: application,
+      applicationType: application,
       categories: categories.map(category => ({
         id: category,
         name: category,
         type: category,
+        applicationType: application,
         dashboards: dashboards.filter(({dashboardType, id, title}) =>{
           const isApp = dashboardType === application;
           const isStandard = title.includes('STANDARD');
@@ -655,13 +656,11 @@ app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
             return true;
           }
           return false;
-        }).map(({id, title, type}) => ({id, name: title, type }))
-      })).filter((category) => {
-        return category.dashboards.length;
-      })
+        }).map(({id, title, type}) => ({id, name: title, type, applicationType: application }))
+      }))
     }));
 
-    res.status(200).json({applications: result});
+    res.status(200).json(result);
   } catch (e) {
     console.error(e);
     res.status(500).send(e);
