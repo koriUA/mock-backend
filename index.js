@@ -698,20 +698,20 @@ app.get("/api/config/view/dashboard/:dashboardId", (req, res, next) => {
     [
       {
         "id": 1,
-        "selected": true,
-        "dashboardId": 20,
+        "selected": false,
+        "dashboardId": 74,
         "name": "view 001"
       },
       {
         "id": 2,
-        "selected": false,
-        "dashboardId": 20,
+        "selected": true,
+        "dashboardId": 79,
         "name": "view 002"
       },
       {
         "id": 3,
-        "selected": true,
-        "dashboardId": 20,
+        "selected": false,
+        "dashboardId": 76,
         "name": "view 003"
       },
     ]
