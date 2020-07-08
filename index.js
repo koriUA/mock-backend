@@ -620,54 +620,6 @@ app.post("/api/reports/ed", (req, res, next) => {
 });
 */
 
-app.get('/api/dashboards/config/tree-simplified', async (req, res, next) => {
-  console.log('invoked tree config request');
-
-  try {
-    const dashboards = await axios.get('http://10.239.169.188:8080/api/dashboards', {
-      headers: req.headers
-    }).then((response) => response.data);
-    const applications = ['REALTIME_DASHBOARD', 'ENTERPRISE_DASHBOARD', 'NO_APPLICATION'];
-    const categories = ["STANDARD",
-      "SHARED",
-      "PERSONAL",
-      "PUBLIC",
-      "ADMIN"];
-  
-    const result = applications.map(application => ({
-      applicationType: application,
-      categories: categories.map(category => ({
-        id: category,
-        name: category,
-        type: category,
-        applicationType: application,
-        dashboards: dashboards.filter(({dashboardType, id, title}) =>{
-          const isApp = dashboardType === application;
-          const isStandard = title.includes('STANDARD');
-          const isShared = title.includes('SHARED');
-          const isPublic = title.includes('PUBLIC');
-          const isAdmin = title.includes('ADMIN');
-          // TODO... SELF_CREATED;
-          const isPersonal = !isStandard && !isShared && !isPublic && !isAdmin;
-          if (title.includes(category) && isApp) {
-            return true;
-          }
-          if (isApp && category === 'PERSONAL' && !isStandard && !isShared && !isPublic && !isAdmin) {
-            return true;
-          }
-          return false;
-        }).map(({id, title, type}) => ({id, name: title, type, applicationType: application }))
-      }))
-    }));
-
-    res.status(200).json(result);
-  } catch (e) {
-    console.error(e);
-    res.status(500).send(e);
-  }
-
-});
-
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
   res.send(
     {"metrics":{"ED_TOPLINE_SUMMARY":[{"metricId":"NumberOfAbandonedShoppingCarts","preSelected":false},{"metricId":"AvgItemsInShoppingCart","preSelected":false},{"metricId":"AverageNewSessionLength","preSelected":false},{"metricId":"AverageOrderValue","preSelected":true},{"metricId":"AverageRepeatSessionLength","preSelected":false},{"metricId":"AverageSessionLength","preSelected":false},{"metricId":"ShippingPerOrder","preSelected":false},{"metricId":"AverageTimePerPage","preSelected":false},{"metricId":"BounceRate","preSelected":true},{"metricId":"BuyingSessionsCompleted","preSelected":true},{"metricId":"TotalConversionPoints","preSelected":false},{"metricId":"EventsPointsPerSession","preSelected":false},{"metricId":"EventsPerSession","preSelected":false},{"metricId":"TotalConversionsCompleted","preSelected":false},{"metricId":"ItemAbandonmentRate","preSelected":false},{"metricId":"TotalItemsInShoppingCart","preSelected":false},{"metricId":"TotalItemsOrdered","preSelected":false},{"metricId":"TotalOnSiteSearch","preSelected":true},{"metricId":"TotalOrders","preSelected":false},{"metricId":"OrdersPerSession","preSelected":false},{"metricId":"TotalPageViews","preSelected":false},{"metricId":"PageViewsPerSession","preSelected":false},{"metricId":"TotalProductViews","preSelected":false},{"metricId":"TotalSales","preSelected":true},{"metricId":"TotalSessions","preSelected":true},{"metricId":"TotalShipping","preSelected":false},{"metricId":"ShoppingCartAbandonmentRate","preSelected":false},{"metricId":"TotalTrackedItemsOrdered","preSelected":false},{"metricId":"TotalTrackedOrders","preSelected":false},{"metricId":"TotalTrackedPageViews","preSelected":false},{"metricId":"TotalTrackedProductViews","preSelected":false},{"metricId":"TotalTrackedSales","preSelected":false},{"metricId":"TotalTrackedShipping","preSelected":false},{"metricId":"TotalBuyers","preSelected":false},{"metricId":"TotalVisitors","preSelected":false}],"ED_CHANNELS_SUMMARY":[{"metricId":"TotalSales","attribution":true,"preSelected":true},{"metricId":"TotalShipping","attribution":true,"preSelected":false},{"metricId":"AverageShipping","attribution":true,"preSelected":false},{"metricId":"TotalSessions","attribution":true,"preSelected":true},{"metricId":"BuyingSessionsCompleted","attribution":true,"preSelected":true},{"metricId":"TotalOrders","attribution":true,"preSelected":false},{"metricId":"AverageOrderValue","attribution":true,"preSelected":true},{"metricId":"AverageSessionLength","attribution":true,"preSelected":false},{"metricId":"TotalPageViews","attribution":true,"preSelected":false},{"metricId":"PageViewsPerSession","attribution":false,"preSelected":false},{"metricId":"TotalOnePageSessions","attribution":true,"preSelected":false},{"metricId":"BounceRate","attribution":true,"preSelected":true},{"metricId":"Events","attribution":true,"preSelected":false},{"metricId":"EventSessions","attribution":true,"preSelected":false},{"metricId":"TotalConversionPoints","attribution":true,"preSelected":false},{"metricId":"EventsPointsPerSession","attribution":false,"preSelected":false},{"metricId":"TargetSales","attribution":true,"preSelected":false},{"metricId":"TotalBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyers","attribution":true,"preSelected":false},{"metricId":"NewBuyerSales","attribution":true,"preSelected":false},{"metricId":"TotalVisitors","attribution":true,"preSelected":false},{"metricId":"NewVisitors","attribution":true,"preSelected":false}]},"attributions":[
@@ -692,30 +644,30 @@ app.post("/api/reports/multisite/channel-summary", (req, res, next) => {
 });
 */
 
-app.get("/api/config/view/dashboard/:dashboardId", (req, res, next) => {
-  res.send(
-    [
-      {
-        "id": 1,
-        "selected": true,
-        "dashboardId": 20,
-        "name": "view 001"
-      },
-      {
-        "id": 2,
-        "selected": false,
-        "dashboardId": 20,
-        "name": "view 002"
-      },
-      {
-        "id": 3,
-        "selected": true,
-        "dashboardId": 20,
-        "name": "view 003"
-      },
-    ]
-  )
-})
+// app.get("/api/config/view/dashboard/:dashboardId", (req, res, next) => {
+//   res.send(
+//     [
+//       {
+//         "id": 1,
+//         "selected": true,
+//         "dashboardId": 20,
+//         "name": "view 001"
+//       },
+//       {
+//         "id": 2,
+//         "selected": false,
+//         "dashboardId": 20,
+//         "name": "view 002"
+//       },
+//       {
+//         "id": 3,
+//         "selected": true,
+//         "dashboardId": 20,
+//         "name": "view 003"
+//       },
+//     ]
+//   )
+// })
 
 
 
