@@ -58,6 +58,29 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/api/logout", (req, res, next) => {
+  return res.status(200).json({ 'code':200, 'message':'success' });
+});
+
+app.get("/api/loggedinuser", (req, res, next) => {
+  return res.status(200).json(
+    { 
+      "code":200,
+      "LoggedInUser": {
+        "email": "stubuser@us.ibm.com",
+        "name": "Stub User",
+        "locale": "en_US",
+        "clientId": 59000000,
+        "masterSubClientIds": {
+          "59000000": "Stub client",
+          "30000001": "Some obnoxiously long site alias that should never have been allowed to exist",
+          "30004001": "QA Content Commerce"
+        }
+      }
+    }
+  );
+});
+
 // app.post("/api/funnel/multisite", (req, res, next) => {
 //   return res.status(200).send({
 //     data: {
