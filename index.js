@@ -655,6 +655,7 @@ app.post("/rtm/api/kpi/realtime", (req, res, next) => res.send(test));
 
 const defaultRoute = (req, res, next) => {
   //const newUrl = "rtmctl1.dev02.ue1.da.dev-digitalanalytics.awsnp:8080";
+  //const newUrl = "http://rtmcontroller1.dev01.da.acoustic.co:8080";
   const newUrl = "http://10.239.169.188:8080";
   //const newUrl = 'https://da-dev-dev02-app-alb-1234159438.us-east-1.elb.amazonaws.com';
   console.log(`proxy to ${newUrl}${req.originalUrl}...`);
