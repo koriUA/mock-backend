@@ -658,7 +658,7 @@ const defaultRoute = (req, res, next) => {
   const newUrl = "http://10.239.169.188:8080";
   //const newUrl = 'https://da-dev-dev02-app-alb-1234159438.us-east-1.elb.amazonaws.com';
   console.log(`proxy to ${newUrl}${req.originalUrl}...`);
-  const jSessionId = "c0d4c013-6adb-4cff-862a-60683532e43a";
+  const jSessionId = "jSessionId";
 
   request({
     method: req.method,
