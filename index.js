@@ -17,6 +17,7 @@ const port = 3099;
 const MAX_DELAY = 1000;
 const ERROR_POSIBILITY_PERCENT = 0;
 const NULL_DATA_POSSIBILITY = 0;
+const jSessionId = "9c863182-8e6c-43d9-9e2d-45abd790c61a";
 
 app.use((req, res, next) => {
   setTimeout(() => {
@@ -397,12 +398,11 @@ app.get("/api/dashboards/subclients", (req, res, next) => {
   ]);
 });
 */
-/*
-app.get("/api/dashboards/1", (req, res, next) => {
-  console.log("GET /api/dashboard/:id");
+
+app.get("/rtm/api/dashboards/1541", (req, res, next) => {
   res.send(dashboardsData.data[1]);
 });
-*/
+
 
 /*
 app.get("/api/widget-item-config/ED_REPORT", (req, res, next) => {
@@ -671,16 +671,12 @@ const fiscalData = {"code":0,"CalendarDefinition":{"calendarData":{"weeks":{"dat
 app.get("/api/calendar", (req, res, next) => res.send(fiscalData));
 
 
-const test = {"data":[{"metricId":"TotalConversionPoints","actualData":[{"time":1594270800000,"value":42340.0},{"time":1594274400000,"value":69530.0},{"time":1594278000000,"value":40890.0},{"time":1594281600000,"value":70540.0},{"time":1594285200000,"value":40580.0},{"time":1594288800000,"value":71470.0},{"time":1594292400000,"value":41800.0},{"time":1594296000000,"value":69160.0},{"time":1594299600000,"value":42810.0},{"time":1594303200000,"value":70710.0},{"time":1594306800000,"value":39110.0},{"time":1594310400000,"value":68340.0},{"time":1594314000000,"value":24550.0}],"projectedData":[]}]};
-app.post("/rtm/api/kpi/realtime", (req, res, next) => res.send(test));
+// const test = {"data":[{"metricId":"TotalConversionPoints","actualData":[{"time":1594270800000,"value":42340.0},{"time":1594274400000,"value":69530.0},{"time":1594278000000,"value":40890.0},{"time":1594281600000,"value":70540.0},{"time":1594285200000,"value":40580.0},{"time":1594288800000,"value":71470.0},{"time":1594292400000,"value":41800.0},{"time":1594296000000,"value":69160.0},{"time":1594299600000,"value":42810.0},{"time":1594303200000,"value":70710.0},{"time":1594306800000,"value":39110.0},{"time":1594310400000,"value":68340.0},{"time":1594314000000,"value":24550.0}],"projectedData":[]}]};
+// app.post("/rtm/api/kpi/realtime", (req, res, next) => res.send(test));
 
 const defaultRoute = (req, res, next) => {
-  //const newUrl = "rtmctl1.dev02.ue1.da.dev-digitalanalytics.awsnp:8080";
-  //const newUrl = "http://rtmcontroller1.dev01.da.acoustic.co:8080";
   const newUrl = "http://10.239.169.188:8080";
-  //const newUrl = 'https://da-dev-dev02-app-alb-1234159438.us-east-1.elb.amazonaws.com';
   console.log(`proxy to ${newUrl}${req.originalUrl}...`);
-  const jSessionId = "jSessionId";
 
   request({
     method: req.method,
